@@ -7,6 +7,8 @@
 <script>
 export default {
   data() {
+    // console.log(process.env, __ENV__)
+    // debugger
     return {
       // note: changing this line won't causes changes
       // with hot-reload because the reloaded component
