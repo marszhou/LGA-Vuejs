@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       // note: changing this line won't causes changes
       // with hot-reload because the reloaded component
