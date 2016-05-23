@@ -13,7 +13,7 @@ module.exports = {
     filename: '[name].js'
   },
   externals: {
-    'zepto': 'Zepto',
+    'zepto': '$',
     'lodash': '_'
     // 'wx': 'jWeixin'
   },
