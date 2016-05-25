@@ -48,6 +48,8 @@ module.exports = {
     'no-duplicate-case': 0,
     'no-func-assign': 0,
     'no-proto': 0,
+    'no-new': 0,
+    'no-new-func': 0,
     'no-sequences': 1,
     // Doesn't work with ES6 classes
     // https://github.com/babel/babel-eslint/issues/8
