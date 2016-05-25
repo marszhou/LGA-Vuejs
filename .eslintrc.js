@@ -40,6 +40,7 @@ module.exports = {
     'no-lonely-if': 0,
     'no-loop-func': 1,
     'no-multi-spaces': [1, { 'exceptions': { 'VariableDeclarator': true, 'ImportDeclaration': true } }],
+    'no-multiple-empty-lines': 0,
     'no-mixed-requires': 2,
     'no-mixed-spaces-and-tabs': [2, false],
     'no-underscore-dangle': 0,
