@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <a v-link="{ path: '/home' }">Go to Foo</a>
+    <a v-link="{ path: '/' }">Go to Foo</a>
     <a v-link="{ path: '/bar' }">Go to Bar</a>
-    <router-view class="view" transition="test" transition-mode="out-in" keep-alive></router-view>
+    <router-view class="view" transition="test" transition-mode="out-in"></router-view>
   </div>
 </template>
 
