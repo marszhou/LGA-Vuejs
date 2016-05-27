@@ -7,6 +7,8 @@ import store from 'src/vuex/store'
 import configRouter from './routes'
 import App from './App'
 
+require('bootstrap/dist/css/bootstrap.css')
+
 Vue.use(Validator)
 Vue.use(VueRouter)
 Vue.use(VueI18n)
