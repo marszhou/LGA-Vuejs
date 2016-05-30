@@ -8,6 +8,8 @@ import configRouter from './routes'
 import App from './App'
 
 require('bootstrap/dist/css/bootstrap.css')
+require('bootstrap/dist/js/bootstrap.js')
+
 
 Vue.use(Validator)
 Vue.use(VueRouter)
