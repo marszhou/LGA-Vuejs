@@ -11,7 +11,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">🎸 Learn Guitar App</a>
+          <a class="navbar-brand" href="#"><div class='emoji'>🎸</div> Learn Guitar App</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,7 +41,7 @@
         <div class="container-fluid">
           <div class="row test-title">
             <div class="col-md-11 title">历史记录</div>
-            <div class="col-md-1 operation text-right"><button type='button' class='btn btn-primary btn-block'>创建测试</button></div>
+            <div class="col-md-1 operation text-right"><button type='button' class='btn btn-info btn-block'>创建测试</button></div>
           </div>
         </div>
 
@@ -101,8 +101,8 @@
 
         <form class='form-horizontal'>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="formGroupInputLarge">选择类型</label>
-            <div class="col-sm-10">
+            <label class="col-md-2 control-label" for="formGroupInputLarge">选择类型</label>
+            <div class="col-md-10">
               <select class="form-control" id="exampleInputEmail1">
                 <option value='1'>唱名转音名</option>
                 <option value='2'>音名转唱名</option>
@@ -112,17 +112,17 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="exampleInputPassword1">选择调性</label>
-            <div class="col-sm-10">
+            <label class="col-md-2 control-label" for="exampleInputPassword1">选择调性</label>
+            <div class="col-md-10">
               <label class='checkbox-inline'><input type='checkbox'/>全选</label>
             </div>
-            <div class='col-sm-10 col-sm-offset-2'>
+            <div class='col-md-10 col-md-offset-2'>
               <label class='checkbox-inline'><input type='checkbox'/>C大调</label>
               <label class='checkbox-inline'><input type='checkbox'/>D大调</label>
               <label class='checkbox-inline'><input type='checkbox'/>E大调</label>
               <label class='checkbox-inline'><input type='checkbox'/>F大调</label>
             </div>
-            <div class='col-sm-10 col-sm-offset-2'>
+            <div class='col-md-10 col-md-offset-2'>
               <label class='checkbox-inline'><input type='checkbox'/>c小调</label>
               <label class='checkbox-inline'><input type='checkbox'/>d小调</label>
               <label class='checkbox-inline'><input type='checkbox'/>e小调</label>
@@ -131,15 +131,15 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="exampleInputPassword1">选择测试类型</label>
-            <div class="col-sm-6">
+            <label class="col-md-2 control-label" for="exampleInputPassword1">选择测试类型</label>
+            <div class="col-md-6">
               <select class="form-control" id="exampleInputEmail1">
                 <option value='1'>限制时间</option>
                 <option value='2'>限制数量</option>
                 <option value='3'>无限制</option>
               </select>
             </div>
-            <div class='col-sm-4'>
+            <div class='col-md-4'>
               <div class="input-group">
                 <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
                 <div class="input-group-addon">分钟</div>
@@ -148,8 +148,8 @@
           </div>
 
           <div class="form-group">
-            <div class='col-sm-offset-2 col-sm-2 col-xs-offset-0 col-xs-12'>
-              <button type="button" class="btn btn-primary btn-block">Submit</button>
+            <div class='col-md-offset-2 col-md-2 col-xs-offset-0 col-xs-12'>
+              <button type="button" class="btn btn-info btn-block">创建</button>
             </div>
           </div>
 
@@ -221,5 +221,17 @@ export default {
   /*margin: 0 -10px;*/
   padding-left: 5px;
   padding-right: 0px;
+}
+
+.emoji {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  font-size: 0.8em;
+  border: 1px solid gray;
+  background: gray;
+  border-radius: 1em;
 }
 </style>
