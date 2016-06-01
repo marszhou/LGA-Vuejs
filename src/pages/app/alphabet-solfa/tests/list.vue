@@ -7,7 +7,7 @@
 <script>
 export default {
 
-  name: 'component_name',
+  name: 'test-list',
 
   data() {
     return {

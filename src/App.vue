@@ -36,12 +36,15 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <ol class="breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">音名唱名转换</a></li>
-      <li class="active">创建</li>
-      {{breadcrumbs}}
-    </ol>
+    <breadcrumbs :data='breadcrumbs'></breadcrumbs>
+
+    <!-- <ol class="breadcrumb">
+      <li><a href="#" v-link="{name: 'home'}">Home</a></li>
+      <li v-for="bc in breadcrumbs">
+        <a href='#' v-link="{name: bc.name}" v-if='!!bc.name'>{{ bc.display }}</a>
+        <template v-else>{{ bc.display }}</template>
+      </li>
+    </ol> -->
 
     <div class="panel panel-default">
 
@@ -201,15 +204,17 @@
 <script>
 import store from 'src/vuex/store'
 import Hello from './components/Hello'
+import breadcrumbs from 'components/breadcrumbs'
 
 export default {
   store,
   components: {
-    Hello
+    Hello,
+    breadcrumbs
   },
   vuex: {
     getters: {
-      breadcrumbs: state => state.global.breadcrumbs.join(',')
+      breadcrumbs: state => state.global.breadcrumbs
     }
   }
 }

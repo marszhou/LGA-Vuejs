@@ -7,7 +7,7 @@
 <script>
 export default {
 
-  name: 'component_name',
+  name: 'app-home',
 
   data() {
     return {

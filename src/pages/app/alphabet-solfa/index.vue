@@ -8,7 +8,7 @@
 <script>
 export default {
 
-  name: 'component_name',
+  name: 'alphabet-solfa',
 
   data() {
     return {

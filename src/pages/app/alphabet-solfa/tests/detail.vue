@@ -7,7 +7,7 @@
 <script>
 export default {
 
-  name: 'component_name',
+  name: 'test-detail',
 
   data() {
     return {

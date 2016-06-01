@@ -8,7 +8,7 @@
 <script>
 export default {
 
-  name: 'component_name',
+  name: 'test-start',
 
   data() {
     return {

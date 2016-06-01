@@ -7,6 +7,8 @@
 
 <script>
   export default {
+    name: 'home',
+
     route: {
       canActivate(transition) {
         console.log('canActivate')
