@@ -14,6 +14,16 @@ export default {
     return {
 
     };
+  },
+  route: {
+    activate(transition) {
+      console.log('App activated!')
+      transition.next()
+    },
+    deactivate(transition) {
+      console.log('App deactivated!')
+      transition.next()
+    }
   }
 };
 </script>

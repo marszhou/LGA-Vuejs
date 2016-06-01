@@ -15,7 +15,7 @@ Vue.config.debug = isDebug
 
 export default new Vuex.Store({
   modules: {
-    global: global
+    global
   },
   state: {isProduction, isDebug, usePushState},
   strict: isDebug,

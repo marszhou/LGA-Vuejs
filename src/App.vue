@@ -11,28 +11,37 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><div class='emoji'>🎸</div> Learn Guitar App</a>
+          <a class="navbar-brand" href="#" v-link="{path:'/'}"><div class='emoji'>🎸</div> Learn Guitar App</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#" v-link="{name: 'app-alphabet-solfa-tests-create'}">
+                音名&lt;&gt;唱名
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <!--
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工具箱 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">音名唱名转换</a></li>
               </ul>
             </li>
+            -->
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
     <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">音名唱名转换</a></li>
-        <li class="active">创建</li>
-      </ol>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">音名唱名转换</a></li>
+      <li class="active">创建</li>
+      {{breadcrumbs}}
+    </ol>
 
     <div class="panel panel-default">
 
@@ -190,11 +199,18 @@
 </template>
 
 <script>
+import store from 'src/vuex/store'
 import Hello from './components/Hello'
 
 export default {
+  store,
   components: {
     Hello
+  },
+  vuex: {
+    getters: {
+      breadcrumbs: state => state.global.breadcrumbs.join(',')
+    }
   }
 }
 </script>
@@ -233,5 +249,6 @@ export default {
   border: 1px solid gray;
   background: gray;
   border-radius: 1em;
+  opacity: 0.8;
 }
 </style>

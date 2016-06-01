@@ -4,6 +4,7 @@
     <alert type="warning" dismissable>
       <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </alert>
+    <a href="#" v-link="{path:'home'}">Back to home</a>
   </div>
 </template>
 

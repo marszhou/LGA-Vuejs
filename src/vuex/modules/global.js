@@ -1,8 +1,12 @@
 import Vue from 'vue'
-import * as types from '../types'
+import * as types from '../mutation-types'
 import {refreshTitle} from 'utils'
 
-const {SET_TITLE, TOGGLE_FOOTER} = types.global
+const {
+  SET_TITLE,
+  TOGGLE_FOOTER,
+  SET_BREADCRUMB
+} = types.global
 
 const UA = navigator.userAgent
 const isInWechat = UA.indexOf('MicroMessenger') > 0
@@ -41,7 +45,8 @@ const state = {
   showFooter: false,
   docTitle: '',
   enterLocation: window.location.href,
-  docOrigin: 'http://app.huoban.com/'
+  // docOrigin: 'http://app.huoban.com/',
+  breadcrumbs: [] // 导航面包屑
 }
 
 // 对子模块数据的操作
@@ -60,6 +65,10 @@ const mutations = {
 
   [TOGGLE_FOOTER](state, show) {
     state.showFooter = show
+  },
+
+  [SET_BREADCRUMB](state, breadcrumbs) {
+    state.breadcrumbs = breadcrumbs
   }
 }
 
