@@ -3,42 +3,9 @@
 
     <div id="app">
 
-      <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#" v-link="{path:'/'}"><div class='emoji'>🎸</div> Learn Guitar App</a>
-          </div>
+      <navbar></navbar>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="#" v-link="{name: 'app-alphabet-solfa-tests-create'}">
-                  音名&lt;&gt;唱名
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <!--
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工具箱 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">音名唱名转换</a></li>
-                </ul>
-              </li>
-              -->
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-
-      <breadcrumbs :data='breadcrumbs'></breadcrumbs>
+      <breadcrumbs></breadcrumbs>
 
       <!-- <ol class="breadcrumb">
         <li><a href="#" v-link="{name: 'home'}">Home</a></li>
@@ -52,97 +19,30 @@
 
         <div class="panel-body">
 
-          <div class="container-fluid">
-            <div class="row test-title">
-              <div class="col-md-11 title">历史记录</div>
-              <div class="col-md-1 operation text-right"><button type='button' class='btn btn-info btn-block'>创建测试</button></div>
-            </div>
-          </div>
 
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>时间</th>
-                <th>描述</th>
-                <th>成绩</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
+          <list-title-bar title='历史'>
+            <button type='button' class='btn btn-info btn-block'>创建</button>
+          </list-title-bar>
+
+          <data-table></data-table>
 
 
-          <nav class='text-center'>
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <pagination></pagination>
 
           <hr/>
 
           <form class='form-horizontal'>
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="formGroupInputLarge">选择类型</label>
-              <div class="col-md-10">
-                <select class="form-control" id="exampleInputEmail1">
-                  <option value='1'>唱名转音名</option>
-                  <option value='2'>音名转唱名</option>
-                  <option value='3'>混合</option>
-                </select>
-              </div>
-            </div>
+            <form-group label='选择类型'>
+              <select class="form-control" id="exampleInputEmail1">
+                <option value='1'>唱名转音名</option>
+                <option value='2'>音名转唱名</option>
+                <option value='3'>混合</option>
+              </select>
+            </form-group>
 
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="exampleInputPassword1">选择调性</label>
-              <div class="col-md-10">
-                <label class='checkbox-inline'><input type='checkbox'/>全选</label>
-              </div>
-              <div class='col-md-10 col-md-offset-2'>
-                <label class='checkbox-inline'><input type='checkbox'/>C大调</label>
-                <label class='checkbox-inline'><input type='checkbox'/>D大调</label>
-                <label class='checkbox-inline'><input type='checkbox'/>E大调</label>
-                <label class='checkbox-inline'><input type='checkbox'/>F大调</label>
-              </div>
-              <div class='col-md-10 col-md-offset-2'>
-                <label class='checkbox-inline'><input type='checkbox'/>c小调</label>
-                <label class='checkbox-inline'><input type='checkbox'/>d小调</label>
-                <label class='checkbox-inline'><input type='checkbox'/>e小调</label>
-                <label class='checkbox-inline'><input type='checkbox'/>f小调</label>
-              </div>
-            </div>
+            <form-group label='选择调性'>
+              <alphabet-selector type='checkbox'></alphabet-selector>
+            </form-group>
 
             <div class="form-group">
               <label class="col-md-2 control-label" for="exampleInputPassword1">选择测试类型</label>
@@ -208,17 +108,38 @@
 <script>
 import store from 'src/vuex/store'
 import Hello from './components/Hello'
-import breadcrumbs from 'components/breadcrumbs'
+import Breadcrumbs from 'components/breadcrumbs'
+import Navbar from 'components/navbar'
+import ListTitleBar from 'components/list-title-bar'
+import DataTable from 'components/data-table'
+import Pagination from 'components/pagination'
+import FormGroup from 'components/form-group'
+import AlphabetSelector from 'components/alphabet-selector'
 
 export default {
   store,
   components: {
     Hello,
-    breadcrumbs
+    Breadcrumbs,
+    Navbar,
+    ListTitleBar,
+    DataTable,
+    Pagination,
+    FormGroup,
+    AlphabetSelector
   },
   vuex: {
     getters: {
-      breadcrumbs: state => state.global.breadcrumbs
+    }
+  },
+
+  ready() {
+    let loadingEle = document.querySelector('#landing_loading')
+    if (loadingEle) {
+      loadingEle.classList.add('done')
+      setTimeout(function(el) {
+        el.parentNode.removeChild(el)
+      }, 1500, loadingEle)
     }
   }
 }

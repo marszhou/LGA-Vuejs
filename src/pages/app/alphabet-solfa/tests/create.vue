@@ -1,6 +1,7 @@
 <template>
   <div>
     test create
+    <button @click='click'>click</button>
   </div>
 </template>
 
@@ -13,6 +14,11 @@ export default {
     return {
 
     };
+  },
+  methods: {
+    click() {
+      console.log(this.$parent, this.$root)
+    }
   }
 };
 </script>
