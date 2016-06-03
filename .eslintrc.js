@@ -24,7 +24,7 @@ module.exports = {
     // 'indent': [1, 2],
     'eol-last': 0,
     'camelcase': 0,
-    'comma-dangle': [1, 'never'],
+    'comma-dangle': [0, 'never'],
     // Doesn't work inside ES6 template strings
     'comma-spacing': 0,
     'consistent-return': 0,
