@@ -1,6 +1,6 @@
 <template>
   <table class="table table-hover">
-    <caption>{{checked | json}}</caption>
+    <!-- <caption>{{checked | json}}</caption> -->
     <thead>
       <tr>
         <th v-if='hasCheckbox'>

@@ -8,12 +8,16 @@
     </li>
     <template v-if='hasFirst'>
       <li><a href='#' @click='handlePageClick(1, $event)'>1</a></li>
-      <li><span>...</span></li>
+      <li v-if='hasFirstEllipsis'><span>...</span></li>
     </template>
-    <li v-for='page of displayedPages'><a href="#" @click='handlePageClick(page, $event)'>{{page}}</a></li>
+
+    <li v-for='page of displayedPages'>
+      <a href="#" v-if='page !== current' @click='handlePageClick(page, $event)'>{{page}}</a>
+      <span v-else class='page-current'>{{page}}</span>
+    </li>
 
     <template v-if='hasLast'>
-      <li><span>...</span></li>
+      <li v-if='hasLastEllipsis'><span>...</span></li>
       <li><a href='#' @click='handlePageClick(pageCount, $event)'>{{pageCount}}</a></li>
     </template>
 
@@ -48,7 +52,7 @@ export default {
       coerce: toNumber
     },
 
-    maxPage: {
+    rangeSize: {
       type: Number,
       default: 5,
       coerce: toNumber
@@ -66,13 +70,14 @@ export default {
       this.current = page
       this.$$dispatch(events.Page, arguments)
     },
-    handlePrevious() {
-      --this.current
+    handlePrevious(e) {
+      this.current = this.current - 1
+      this.$$dispatch(events.Page, [this.current, e]);
     },
-    handleNext() {
-      ++this.current
+    handleNext(e) {
+      this.current = this.current + 1
+      this.$$dispatch(events.Page, [this.current, e]);
     }
-
   },
 
   data() {
@@ -83,19 +88,39 @@ export default {
 
   computed: {
     displayedPages() {
-      return [5,6,7,8,9]
+      let begin = this.current - Math.floor(this.rangeSize / 2)
+      if (begin < 1) {
+        begin = 1
+      }
+      let end = begin + this.rangeSize
+      if (end > this.pageCount) {
+        end = this.pageCount + 1
+        begin = end - this.rangeSize
+        if (begin < 1) {
+          begin = 1
+        }
+      }
+      return _.range(begin, end)
     },
     hasNext() {
-      return true
+      let next = this.current + 1
+      return next <= this.pageCount
     },
     hasPrevious() {
-      return true
+      let previous = this.current - 1
+      return previous >= 1
     },
     hasFirst() {
-      return true
+      return !_.contains(this.displayedPages, 1)
+    },
+    hasFirstEllipsis() {
+      return _.first(this.displayedPages) - 1 > 1
     },
     hasLast() {
-      return true
+      return !_.contains(this.displayedPages, this.pageCount)
+    },
+    hasLastEllipsis() {
+      return this.pageCount - _.last(this.displayedPages) > 1
     },
     pageCount() {
       return Math.floor(this.recordCount / this.pageSize) + ((this.recordCount % this.pageSize === 0) ? 0 : 1)
@@ -105,4 +130,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.page-current {
+  font-weight: bold;
+  color: red;
+}
 </style>
