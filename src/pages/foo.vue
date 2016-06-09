@@ -7,11 +7,14 @@
     <data-table :headers='tableData.headers'
                 :rows='tableData.rows'
                 :controls='tableData.controls'
-                :has-index='true'>
+                :has-index='true'
+                :has-checkbox='true'>
     </data-table>
 
 
-    <pagination :record-count='1000' @pagination-page='handlePage'></pagination>
+    <pagination :record-count='1000'
+                @pagination:page='handlePage'>
+    </pagination>
 
     <hr/>
 
@@ -131,6 +134,9 @@ export default {
     },
     [DataTableEvents.HeadClick]() {
       console.log('headclick', arguments)
+    },
+    [DataTableEvents.Checked]() {
+      console.log('checked', arguments)
     },
 
     // [PaginationEvents.Page]() {
