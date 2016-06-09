@@ -15,6 +15,16 @@ Vue.use(Validator)
 Vue.use(VueRouter)
 Vue.use(VueI18n)
 
+Vue.mixin({
+  methods: {
+    $$dispatch(eventName, args) {
+      var argsCopy = Array.prototype.slice.call(args)
+      argsCopy.unshift(eventName)
+      this.$dispatch.apply(this, argsCopy)
+    }
+  }
+})
+
 let router = new VueRouter({
   hashbang: true,
   history: store.state.usePushState,

@@ -15,10 +15,18 @@ export default function(router, store) {
       component: require('pages/home'),
       display: '首页'
     },
+    '/foo': {
+      name: 'foo',
+      component: require('pages/foo'),
+      display: 'Foo'
+    },
+
     '/bar': {
       name: 'bar',
       component: require('pages/bar')
     },
+
+
     'app': {
       name: 'app',
       component: require('pages/app'),

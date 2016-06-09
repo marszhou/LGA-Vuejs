@@ -152,3 +152,7 @@ export function getDomain(url) {
 
   return match && match[1] ? match[1] : ''
 }
+
+export function toNumber(val) {
+  return +val
+}
