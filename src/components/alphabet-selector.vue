@@ -1,15 +1,16 @@
 <template>
 <div class='container-fluid'>
   <div class='row' v-if='type === "checkbox"'>
-    <label class='checkbox-inline'><input type='checkbox'/>全选</label>
+    <label class='checkbox-inline'><input type='checkbox' @click='handleCheckAll' :checked='allChecked'/>全选</label>
+    <span>{{selected | json}}</span>
     <br/>
   </div>
   <div class='row' v-if='includeMajor'>
-    <label class='checkbox-inline' v-for='tone of majors'><input :type='type'/> {{tone}}大调</label>
+    <label class='checkbox-inline' v-for='tone of majors'><input :type='type' :value='tone' v-model='checked'/> {{tone}}大调</label>
     <br/>
   </div>
   <div class='row' v-if='includeMinor'>
-    <label class='checkbox-inline' v-for='tone of minors'><input :type='type'/> {{tone}}小调</label>
+    <label class='checkbox-inline' v-for='tone of minors'><input :type='type' :value='tone' v-model='checked'/> {{tone}}小调</label>
   </div>
 </div>
 </template>
@@ -39,11 +40,45 @@ export default {
       validator: (val) => _.indexOf(['checkbox', 'radio'], val.toLowerCase()) > -1
     }
   },
+
+  computed: {
+    allChecked() {
+      return _.difference(this.all, this.checked).length === 0
+    },
+
+    all() {
+      let values1 = []
+      let values2 = []
+
+      if (this.includeMajor) {
+        values1 = this.majors
+      }
+
+      if (this.includeMinor) {
+        values2 = this.minors
+      }
+      return values1.concat(values2)
+    }
+  },
+
   data() {
     return {
       majors: Music.getMajors(),
-      minors: Music.getMinors()
+      minors: Music.getMinors(),
+      checked: []
     };
+  },
+  methods: {
+    handleCheckAll(e) {
+      let checked = e.target.checked
+
+      let values = []
+      if (checked) {
+        values = this.all.slice()
+      }
+
+      this.checked = values
+    },
   }
 };
 </script>
