@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import {DataTable as DataTableEvents, Pagination as PaginationEvents} from 'components/consts/events'
+import {DataTable as DataTableEvents} from 'components/consts/events'
 
 import Breadcrumbs from 'components/breadcrumbs'
 import Navbar from 'components/navbar'
