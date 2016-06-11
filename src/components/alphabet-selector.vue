@@ -6,11 +6,11 @@
     <br/>
   </div>
   <div class='row' v-if='includeMajor'>
-    <label class='checkbox-inline' v-for='tone of majors'><input :type='type' :value='tone' v-model='checked'/> {{tone}}大调</label>
+    <label class='checkbox-inline' v-for='tone of majors'><input :type='type' :value='tone' v-model='checked' @change='handleCheck'/> {{tone}}大调</label>
     <br/>
   </div>
   <div class='row' v-if='includeMinor'>
-    <label class='checkbox-inline' v-for='tone of minors'><input :type='type' :value='tone' v-model='checked'/> {{tone}}小调</label>
+    <label class='checkbox-inline' v-for='tone of minors'><input :type='type' :value='tone' v-model='checked' @change='handleCheck'/> {{tone}}小调</label>
   </div>
 </div>
 </template>
@@ -18,6 +18,8 @@
 <script>
 import _ from 'lodash'
 import * as Music from 'utils/music'
+
+import {AlphabetSelector as AlphabetSelectorEvents} from './consts/events'
 
 export default {
 
@@ -78,7 +80,16 @@ export default {
       }
 
       this.checked = values
+      this.triggerCheckedEvent(this.checked.slice(), e)
     },
+
+    handleCheck(e) {
+      this.triggerCheckedEvent(this.checked.slice(), e)
+    },
+
+    triggerCheckedEvent() {
+      this.$$dispatch(AlphabetSelectorEvents.Checked, arguments)
+    }
   }
 };
 </script>

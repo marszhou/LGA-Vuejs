@@ -8,3 +8,7 @@ export const DataTable = {
 export const Pagination = {
   'Page': 'pagination:page'
 }
+
+export const AlphabetSelector = {
+  'Checked': 'alphabet-selector:checked'
+}

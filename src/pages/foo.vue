@@ -28,7 +28,7 @@
       </form-group>
 
       <form-group label='选择调性'>
-        <alphabet-selector type='checkbox'></alphabet-selector>
+        <alphabet-selector type='checkbox' v-ref:tone></alphabet-selector>
       </form-group>
 
       <div class="form-group">
@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import {DataTable as DataTableEvents} from 'components/consts/events'
+import {DataTable as DataTableEvents, AlphabetSelector as AlphabetSelectorEvents} from 'components/consts/events'
 
 import Breadcrumbs from 'components/breadcrumbs'
 import Navbar from 'components/navbar'
@@ -138,6 +138,11 @@ export default {
     [DataTableEvents.Checked]() {
       console.log('checked', arguments)
     },
+
+    [AlphabetSelectorEvents.Checked]() {
+      console.log('alphabet selector checked', arguments, this.$refs.tone.checked)
+      debugger
+    }
 
     // [PaginationEvents.Page]() {
     //   console.log('pagination.page', arguments)
