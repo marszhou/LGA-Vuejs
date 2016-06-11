@@ -141,7 +141,6 @@ export default {
 
     [AlphabetSelectorEvents.Checked]() {
       console.log('alphabet selector checked', arguments, this.$refs.tone.checked)
-      debugger
     }
 
     // [PaginationEvents.Page]() {
