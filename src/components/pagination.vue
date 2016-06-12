@@ -33,7 +33,7 @@
 <script>
 
 import {toNumber} from 'utils'
-import {Pagination as events} from './consts/events'
+import {PaginationEvents as events} from './consts/events'
 
 export default {
 

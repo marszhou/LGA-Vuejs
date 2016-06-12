@@ -19,7 +19,7 @@
 import _ from 'lodash'
 import * as Music from 'utils/music'
 
-import {AlphabetSelector as AlphabetSelectorEvents} from './consts/events'
+import {AlphabetSelectorEvents} from './consts/events'
 
 export default {
 

@@ -44,7 +44,7 @@
 <script>
 // import _ from 'lodash'
 
-import {DataTable as events} from './consts/events'
+import {DataTableEvents as events} from './consts/events'
 import _ from 'lodash'
 
 export default {
