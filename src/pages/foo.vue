@@ -31,22 +31,9 @@
         <alphabet-selector type='checkbox' v-ref:tone></alphabet-selector>
       </form-group>
 
-      <div class="form-group">
-        <label class="col-md-2 control-label" for="exampleInputPassword1">选择测试类型</label>
-        <div class="col-md-6">
-          <select class="form-control" id="exampleInputEmail1">
-            <option value='1'>限制时间</option>
-            <option value='2'>限制数量</option>
-            <option value='3'>无限制</option>
-          </select>
-        </div>
-        <div class='col-md-4'>
-          <div class="input-group">
-            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-            <div class="input-group-addon">分钟</div>
-          </div>
-        </div>
-      </div>
+      <form-group label='选择测试模式' :multi='true'>
+        <test-mode></test-mode>
+      </form-group>
 
       <div class="form-group">
         <div class='col-md-offset-2 col-md-2 col-xs-offset-0 col-xs-12'>
@@ -95,6 +82,7 @@ import DataTable from 'components/data-table'
 import Pagination from 'components/pagination'
 import FormGroup from 'components/form-group'
 import AlphabetSelector from 'components/alphabet-selector'
+import TestMode from 'components/test-mode'
 
 export default {
   components: {
@@ -104,7 +92,8 @@ export default {
     DataTable,
     Pagination,
     FormGroup,
-    AlphabetSelector
+    AlphabetSelector,
+    TestMode
   },
 
   data() {
