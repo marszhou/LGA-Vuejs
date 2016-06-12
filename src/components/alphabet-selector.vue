@@ -40,6 +40,10 @@ export default {
     type: {
       type: String,
       validator: (val) => _.indexOf(['checkbox', 'radio'], val.toLowerCase()) > -1
+    },
+    value: {
+      type: [String, Array],
+      default: null
     }
   },
 
@@ -67,7 +71,7 @@ export default {
     return {
       majors: Music.getMajors(),
       minors: Music.getMinors(),
-      checked: []
+      checked: this.value || []
     };
   },
   methods: {
@@ -84,6 +88,7 @@ export default {
     },
 
     handleCheck(e) {
+      // debugger
       this.triggerCheckedEvent(this.checked.slice(), e)
     },
 

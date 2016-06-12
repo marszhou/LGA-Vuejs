@@ -28,7 +28,7 @@
       </form-group>
 
       <form-group label='选择调性'>
-        <alphabet-selector type='checkbox' v-ref:tone></alphabet-selector>
+        <alphabet-selector type='checkbox' v-ref:tone :value='["a", "C"]'></alphabet-selector>
       </form-group>
 
       <form-group label='选择测试模式' :multi='true'>
