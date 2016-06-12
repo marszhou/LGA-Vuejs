@@ -15,4 +15,3 @@ export const global = cv([
   'TOGGLE_FOOTER',
   'SET_BREADCRUMB'
 ])
-

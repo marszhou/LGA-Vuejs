@@ -32,7 +32,7 @@
       </form-group>
 
       <form-group label='选择测试模式' :multi='true'>
-        <test-mode></test-mode>
+        <testing-mode></testing-mode>
       </form-group>
 
       <div class="form-group">
@@ -45,18 +45,7 @@
 
     <hr/>
 
-    <div class="page-header container-fluid">
-      <div class="row test-title">
-        <div class="col-md-3 title">唱名音名转换测试</div>
-        <div class="col-md-5 time">时间：05:00/30:00</div>
-        <div class="col-md-2 progressing">
-          完成度：60%
-
-        </div>
-        <div class="col-md-1 col-xs-6 operation text-right"><button type='button' class='btn btn-info btn-block'>暂停</button></div>
-        <div class="col-md-1 col-xs-6 operation text-right"><button type='button' class='btn btn-danger btn-block'>退出</button></div>
-      </div>
-    </div>
+    <testing-title title='音名唱名转换' :mode='1' :duration='1800' :total='20'></testing-title>
 
     <div class='jumbotron question'>
       question
@@ -73,7 +62,7 @@
 </template>
 
 <script>
-import {DataTable as DataTableEvents, AlphabetSelector as AlphabetSelectorEvents} from 'components/consts/events'
+import {DataTableEvents, AlphabetSelectorEvents, TestingEvents} from 'components/consts/events'
 
 import Breadcrumbs from 'components/breadcrumbs'
 import Navbar from 'components/navbar'
@@ -82,7 +71,10 @@ import DataTable from 'components/data-table'
 import Pagination from 'components/pagination'
 import FormGroup from 'components/form-group'
 import AlphabetSelector from 'components/alphabet-selector'
-import TestMode from 'components/test-mode'
+import TestingMode from 'components/testing-mode'
+import TestingTitle from 'components/testing-title'
+
+import Question from 'models/Question'
 
 export default {
   components: {
@@ -93,7 +85,8 @@ export default {
     Pagination,
     FormGroup,
     AlphabetSelector,
-    TestMode
+    TestingMode,
+    TestingTitle
   },
 
   data() {
@@ -130,6 +123,14 @@ export default {
 
     [AlphabetSelectorEvents.Checked]() {
       console.log('alphabet selector checked', arguments, this.$refs.tone.checked)
+    },
+
+    [TestingEvents.Pause]() {
+      console.log('testing pause')
+    },
+
+    [TestingEvents.Quit]() {
+      console.log('testing quit')
     }
 
     // [PaginationEvents.Page]() {
@@ -141,6 +142,13 @@ export default {
     handlePage() {
       console.log(arguments);
     }
+  },
+
+  created() {
+    let q = new Question({
+      title: '123'
+    })
+    console.log(q)
   }
 }
 </script>
