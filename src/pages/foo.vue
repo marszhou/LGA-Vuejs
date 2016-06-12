@@ -74,7 +74,7 @@ import AlphabetSelector from 'components/alphabet-selector'
 import TestingMode from 'components/testing-mode'
 import TestingTitle from 'components/testing-title'
 
-import Question from 'models/Question'
+import AlphabetSolfaFactory from 'models/factories/AlphabetSolfa'
 
 export default {
   components: {
@@ -145,9 +145,7 @@ export default {
   },
 
   created() {
-    let q = new Question({
-      title: '123'
-    })
+    let q = AlphabetSolfaFactory()
     console.log(q)
   }
 }

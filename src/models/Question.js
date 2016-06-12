@@ -14,7 +14,7 @@ export default class Question {
    * corrects Array - 正确答案
    */
   constructor({title, mode, options, corrects}) {
-    this.title = ''
+    this.title = title
     this.mode = mode
     this.options = options
     this.corrects = corrects
