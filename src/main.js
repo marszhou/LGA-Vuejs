@@ -6,6 +6,7 @@ import {sync} from 'vuex-router-sync'
 import store from 'src/vuex/store'
 import configRouter from './routes'
 import App from './App'
+import {timeDisplay, percent} from 'utils'
 
 require('bootstrap/dist/css/bootstrap.css')
 require('bootstrap/dist/js/bootstrap.js')
@@ -24,6 +25,9 @@ Vue.mixin({
     }
   }
 })
+
+Vue.filter('timeDisplay', timeDisplay)
+Vue.filter('percent', percent)
 
 let router = new VueRouter({
   hashbang: true,
