@@ -1,6 +1,7 @@
-import $ from 'zepto'
+import $ from 'jquery'
 import _ from 'lodash'
 import store from 'src/vuex/store'
+import {sprintf} from 'sprintf-js'
 
 const SS = window.sessionStorage
 const LS = window.localStorage
@@ -155,4 +156,19 @@ export function getDomain(url) {
 
 export function toNumber(val) {
   return +val
+}
+
+export function timeDisplay(ms) {
+  let s = Math.round(ms / 1000)
+  let hh = Math.floor(s / 3600)
+  let mm = Math.floor((s % 3600) / 60)
+  let ss = (s % 60)
+
+  // console.log(hh, mm, ss)
+
+  return sprintf('%02d:%02d:%02d', hh, mm, ss)
+}
+
+export function percent(val) {
+  return sprintf('%0.1f%%', val * 100)
 }
