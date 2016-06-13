@@ -21,3 +21,27 @@ export const TestModeConsts = {
     }
   ]
 }
+
+const __AlphabetTestTypes__ = {
+  'A2T': 1,
+  'T2A': 2,
+  'MIXED': 3
+}
+
+export const AlphabetTestConsts = {
+  types: __AlphabetTestTypes__,
+  typeLabels: [
+    {
+      value: __AlphabetTestTypes__.A2T,
+      label: '唱名转音名'
+    },
+    {
+      value: __AlphabetTestTypes__.T2A,
+      label: '音名转唱名'
+    },
+    {
+      value: __AlphabetTestTypes__.MIXED,
+      label: '混合'
+    }
+  ]
+}
