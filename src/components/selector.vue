@@ -1,6 +1,6 @@
 <template>
   <select v-model='value' class="form-control">
-    <option v-for='option of options' :value='option.value'>{{option.label}}</option>
+    <option v-for='(value, label) of options' :value='value'>{{label}}</option>
   </select>
 </template>
 
@@ -11,8 +11,8 @@ export default {
 
   props: {
     options: {
-      type: Array,
-      default: []
+      type: Object,
+      default: {}
     }
   },
 

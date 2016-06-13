@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-6">
     <select class="form-control" v-model='modeValue'>
-      <option v-for='mode of data.modeLabels' :value='mode.value'>{{mode.label}}</option>
+      <option v-for='(value, label) of data.modeLabels' :value='value'>{{label}}</option>
     </select>
   </div>
 

@@ -6,20 +6,11 @@ const __TestModes__ = {
 
 export const TestModeConsts = {
   mode: __TestModes__,
-  modeLabels: [
-    {
-      value: __TestModes__.TIME,
-      label: '限制时间'
-    },
-    {
-      value: __TestModes__.COUNT,
-      label: '限制数量'
-    },
-    {
-      value: __TestModes__.UNLIMITED,
-      label: '无限制'
-    }
-  ]
+  modeLabels: {
+    [__TestModes__.TIME]: '限制时间',
+    [__TestModes__.COUNT]: '限制数量',
+    [__TestModes__.UNLIMITED]: '无限制'
+  }
 }
 
 const __AlphabetTestTypes__ = {
@@ -30,18 +21,9 @@ const __AlphabetTestTypes__ = {
 
 export const AlphabetTestConsts = {
   types: __AlphabetTestTypes__,
-  typeLabels: [
-    {
-      value: __AlphabetTestTypes__.A2T,
-      label: '唱名转音名'
-    },
-    {
-      value: __AlphabetTestTypes__.T2A,
-      label: '音名转唱名'
-    },
-    {
-      value: __AlphabetTestTypes__.MIXED,
-      label: '混合'
-    }
-  ]
+  typeLabels: {
+    [__AlphabetTestTypes__.A2T]: '唱名转音名',
+    [__AlphabetTestTypes__.T2A]: '音名转唱名',
+    [__AlphabetTestTypes__.MIXED]: '混合'
+  }
 }
