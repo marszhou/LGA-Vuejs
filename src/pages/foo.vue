@@ -20,11 +20,7 @@
 
     <form class='form-horizontal'>
       <form-group label='选择类型'>
-        <select class="form-control" id="exampleInputEmail1">
-          <option value='1'>唱名转音名</option>
-          <option value='2'>音名转唱名</option>
-          <option value='3'>混合</option>
-        </select>
+        <selector :options='alphabetTestTypes'></selector>
       </form-group>
 
       <form-group label='选择调性'>
@@ -57,6 +53,8 @@
       answer
     </div>
 
+    <div v-for='(x,y) of my'>{{x}}{{y}}</div>
+
     <hr/>
   </div>
 </template>
@@ -73,8 +71,13 @@ import FormGroup from 'components/form-group'
 import AlphabetSelector from 'components/alphabet-selector'
 import TestingMode from 'components/testing-mode'
 import TestingTitle from 'components/testing-title'
+import Selector from 'components/selector'
 
-import AlphabetSolfaFactory from 'models/factories/AlphabetSolfa'
+import AlphabetSolfaFactory from 'models/factories/AlphabetSolfaFactory'
+
+import {AlphabetTestConsts} from 'components/consts/types'
+
+// console.log(AlphabetTestConsts.typeLabels)
 
 export default {
   components: {
@@ -86,7 +89,8 @@ export default {
     FormGroup,
     AlphabetSelector,
     TestingMode,
-    TestingTitle
+    TestingTitle,
+    Selector
   },
 
   data() {
@@ -103,6 +107,12 @@ export default {
           {label: 'Retry'},
           {label: 'Cancel', 'class': 'btn-danger'}
         ]
+      },
+
+      alphabetTestTypes: AlphabetTestConsts.typeLabels,
+
+      my: {
+        a: 1, b: 2
       }
     }
   },
