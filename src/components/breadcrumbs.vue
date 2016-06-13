@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import store from 'src/vuex/store'
+// import store from 'src/vuex/store'
 
 export default {
-  store,
+  // store,
   name: 'breadcrumbs',
   vuex: {
     getters: {
