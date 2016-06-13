@@ -1,5 +1,5 @@
 import Question from '../Question'
 
-export default function AlphabetSofaFactory(config) {
+export default function AlphabetSolfaFactory(config) {
   return new Question({})
 }
