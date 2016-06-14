@@ -5,13 +5,13 @@
     </select>
   </div>
 
-  <div class='col-md-4' v-if='modeValue === data.mode.TIME'>
+  <div class='col-md-4' v-if='modeValue + "" === data.mode.TIME + ""'>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="0" v-model='number'>
       <div class="input-group-addon">分钟</div>
     </div>
   </div>
-  <div class='col-md-4' v-if='modeValue === data.mode.COUNT'>
+  <div class='col-md-4' v-if='modeValue + "" === data.mode.COUNT + ""'>
     <input type="text" class="form-control" placeholder="0" v-model='number'>
   </div>
 
@@ -25,12 +25,14 @@ export default {
   name: 'testing-mode',
 
   props: {
-    mode: Number
+    mode: {
+      type: Number,
+      default: TestModeConsts.mode.TIME
+    }
   },
 
   data() {
     return {
-      modeValue: this.mode || TestModeConsts.mode.TIME,
       data: TestModeConsts,
       number: 30
     };
@@ -41,6 +43,14 @@ export default {
       return {
         mode: this.modeValue,
         number: this.number
+      }
+    },
+    modeValue: {
+      get() {
+        return this.mode
+      },
+      set(val) {
+        this.mode = +val
       }
     }
   }

@@ -1,18 +1,52 @@
 <template>
   <div>
-    test create
-    <button @click='click'>click</button>
+    <form class='form-horizontal'>
+      <form-group label='选择类型'>
+        <selector :options='alphabetTestTypes' :default-value='3'></selector>
+      </form-group>
+
+      <form-group label='选择调性'>
+        <alphabet-selector type='checkbox' v-ref:tone :value='["a", "C"]'></alphabet-selector>
+      </form-group>
+
+      <form-group label='选择测试模式' :multi='true'>
+        <testing-mode :mode.sync='testMode'></testing-mode>
+      </form-group>
+
+      <div class="form-group">
+        <div class='col-md-offset-2 col-md-2 col-xs-offset-0 col-xs-12'>
+          <button type="button" class="btn btn-info btn-block">创建</button>
+        </div>
+      </div>
+
+    </form>
   </div>
 </template>
 
 <script>
+// import TitleBar from 'components/title-bar'
+import FormGroup from 'components/form-group'
+import AlphabetSelector from 'components/alphabet-selector'
+import TestingMode from 'components/testing-mode'
+import Selector from 'components/selector'
+
+import {AlphabetTestConsts, TestModeConsts} from 'components/consts/types'
+
+
 export default {
 
   name: 'test-create',
-
+  components: {
+    // TitleBar,
+    FormGroup,
+    AlphabetSelector,
+    TestingMode,
+    Selector
+  },
   data() {
     return {
-
+      alphabetTestTypes: AlphabetTestConsts.typeLabels,
+      testMode: TestModeConsts.mode.COUNT
     };
   },
   methods: {
