@@ -82,26 +82,20 @@
     <dialog title='hey' :dialog-id='dialogId'>
       <button slot='trigger'
               type="button"
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target="#{{dialogId}}" >dialog</button>
+              class="btn btn-primary">dialog</button>
       <div slot='dialog-body'>hello world</div>
 
     </dialog>
 
     <dialog title='show by link' :dialog-id='dialogId2'>
       <a slot='trigger'
-         href='###'
-         data-toggle="modal"
-         data-target="#{{dialogId2}}">link dialog</a>
+         href='###'>link dialog</a>
       <div slot='dialog-body'>hello world</div>
     </dialog>
 
-    <dialog title='auto show' :dialog-id='dialogId3' :auto-show='true'>
+    <dialog title='auto show' :dialog-id='dialogId3' :auto-show='false'>
       <a slot='trigger'
-         href='###'
-         data-toggle="modal"
-         data-target="#{{dialogId3}}">auto dialog</a>
+         href='###'>auto dialog</a>
       <div slot='dialog-body'>hello world</div>
     </dialog>
 

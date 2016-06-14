@@ -1,6 +1,8 @@
 <template>
   <span>
-    <slot name='trigger'></slot>
+    <span class='dialog-trigger'>
+      <slot name='trigger'></slot>
+    </span>
 
     <div class="modal fade" :id="dialogId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -29,6 +31,8 @@
 
 <script>
 // import {uniqueKey} from 'utils'
+
+// import jQuery from 'jquery'
 
 export default {
 
@@ -69,7 +73,16 @@ export default {
     }
   },
 
+  created() {
+
+  },
+
   attached() {
+    // console.log('created', this.$el, jQuery(this.$el).children('.dialog-trigger').children())
+    $(this.$el).children('.dialog-trigger')
+                    .children()
+                    .attr('data-toggle', 'modal')
+                    .attr('data-target', `#${this.dialogId}`)
     if (this.autoShow) {
       this.show()
     }
