@@ -95,4 +95,12 @@ export default {
   border-radius: 1em;
   opacity: 0.8;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+a:focus,
+button:focus {
+  outline: 0!important;
+}
 </style>

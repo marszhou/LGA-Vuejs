@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row test-title">
-      <div class="col-md-11 title">{{title}}</div>
-      <div class="col-md-1 operation text-right"><slot></slot></div>
+      <div class="col-md-{{12 - controlColumns}} title">{{title}}</div>
+      <div class="col-md-{{controlColumns}} operation text-right"><slot></slot></div>
     </div>
   </div>
 </template>
@@ -15,6 +15,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    controlColumns: { // 控制按钮栏所占的栅格宽度
+      type: Number,
+      default: 1
     }
   },
 

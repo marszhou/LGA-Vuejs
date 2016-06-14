@@ -1,8 +1,8 @@
 <template>
   <div>
-    <list-title-bar title='历史'>
+    <title-bar title='历史' :control-columns='2'>
       <button type='button' class='btn btn-info btn-block'>创建</button>
-    </list-title-bar>
+    </title-bar>
 
     <data-table :headers='tableData.headers'
                 :rows='tableData.rows'
@@ -109,7 +109,7 @@ import {DataTableEvents, AlphabetSelectorEvents, TestingEvents, DialogEvents} fr
 
 import Breadcrumbs from 'components/breadcrumbs'
 import Navbar from 'components/navbar'
-import ListTitleBar from 'components/list-title-bar'
+import TitleBar from 'components/title-bar'
 import DataTable from 'components/data-table'
 import Pagination from 'components/pagination'
 import FormGroup from 'components/form-group'
@@ -130,7 +130,7 @@ export default {
   components: {
     Breadcrumbs,
     Navbar,
-    ListTitleBar,
+    TitleBar,
     DataTable,
     Pagination,
     FormGroup,

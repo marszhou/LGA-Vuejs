@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <a href="#" v-link="{name: 'app-alphabet-solfa-tests-create'}">
+          <a href="#" v-link="{name: 'app-alphabet-solfa-tests-create'}" @click='handleLink'>
             音名唱名转换
             <span class="sr-only">(current)</span>
           </a>
@@ -44,6 +44,12 @@ export default {
     return {
 
     };
+  },
+
+  methods: {
+    handleLink() {
+      $('#bs-example-navbar-collapse-1').collapse('hide')
+    }
   }
 };
 </script>
