@@ -18,7 +18,8 @@
             <button v-for='button of buttons'
                     type="button"
                     class="btn btn-{{button.type}}"
-                    data-dismiss="modal">
+                    data-dismiss="modal"
+                    @click='handleButtonClick(button, $event)'>
               {{button.label}}
             </button>
             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
@@ -34,6 +35,8 @@
 
 // import jQuery from 'jquery'
 
+import {DialogEvents} from './consts/events'
+
 export default {
 
   name: 'dialog',
@@ -46,7 +49,7 @@ export default {
     buttons: {
       type: Array,
       default: () => [
-        {label: '关闭', type: 'default'},
+        {label: '关闭', type: 'default', close: true},
         {label: '保存', type: 'primary'},
       ]
     },
@@ -75,31 +78,42 @@ export default {
       this.$dialog().modal()
     },
     toggle() {
-      this.$dialog().model('toggle')
+      this.$dialog().modal('toggle')
     },
     close() {
-      this.$dialog().model('hide')
+      this.$dialog().modal('hide')
     },
     hide() {
       this.close()
     },
 
     handleShow() {
-      console.log('dialog show')
+      // console.log('dialog show')
+      this.$dispatch(DialogEvents.Show)
     },
     handleShown() {
-      console.log('dialog shown')
+      // console.log('dialog shown')
+      this.$dispatch(DialogEvents.Shown)
     },
     handleHide() {
-      console.log('dialog hide')
+      // console.log('dialog hide')
+      this.$dispatch(DialogEvents.Hide)
     },
     handleHidden() {
-      console.log('dialog hidden')
+      // console.log('dialog hidden')
+      this.$dispatch(DialogEvents.Hidden)
+    },
+    handleButtonClick(button, e) {
+      e.preventDefault()
+      e.stopPropagation()
+      if (button.close) {
+        this.close()
+      }
+      this.$$dispatch(DialogEvents.ButtonClick, arguments)
     }
   },
 
   created() {
-
   },
 
   attached() {
@@ -110,9 +124,9 @@ export default {
 
     // console.log('created', this.$el, jQuery(this.$el).children('.dialog-trigger').children())
     $(this.$el).children('.dialog-trigger')
-                    .children()
-                    .attr('data-toggle', 'modal')
-                    .attr('data-target', `#${this.dialogId}`)
+               .children()
+               .attr('data-toggle', 'modal')
+               .attr('data-target', `#${this.dialogId}`)
     if (this.autoShow) {
       this.show()
     }

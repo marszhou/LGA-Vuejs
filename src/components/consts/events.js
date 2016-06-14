@@ -18,3 +18,11 @@ export const TestingEvents = {
   'Quit': 'testing:quit',
   'Finish': 'testing:finish'
 }
+
+export const DialogEvents = {
+  'Show': 'dialog:show',
+  'Shown': 'dialog:shown',
+  'Hide': 'dialog:hide',
+  'Hidden': 'dialog:hidden',
+  'ButtonClick': 'dialog:btn-click'
+}

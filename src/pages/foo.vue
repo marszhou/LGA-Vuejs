@@ -87,13 +87,15 @@
 
     </dialog>
 
-    <dialog title='show by link' :dialog-id='dialogId2'>
+    <dialog title='show by link'
+            :dialog-id='dialogId2'
+            :buttons='[{label: "hello", type: "warning"}, {label: "world", type: "danger"}]'>
       <a slot='trigger'
          href='###'>link dialog</a>
       <div slot='dialog-body'>hello world</div>
     </dialog>
 
-    <dialog title='auto show' :dialog-id='dialogId3' :auto-show='false'>
+    <dialog title='auto show' :dialog-id='dialogId3' :auto-show='false' @dialog:show='handleDialogShow'>
       <a slot='trigger'
          href='###'>auto dialog</a>
       <div slot='dialog-body'>hello world</div>
@@ -103,7 +105,7 @@
 </template>
 
 <script>
-import {DataTableEvents, AlphabetSelectorEvents, TestingEvents} from 'components/consts/events'
+import {DataTableEvents, AlphabetSelectorEvents, TestingEvents, DialogEvents} from 'components/consts/events'
 
 import Breadcrumbs from 'components/breadcrumbs'
 import Navbar from 'components/navbar'
@@ -191,6 +193,10 @@ export default {
 
     [TestingEvents.Quit]() {
       console.log('testing quit')
+    },
+
+    [DialogEvents.ButtonClick]() {
+      console.log('dialog button click', arguments)
     }
 
     // [PaginationEvents.Page]() {
@@ -201,6 +207,9 @@ export default {
   methods: {
     handlePage() {
       console.log(arguments);
+    },
+    handleDialogShow() {
+      console.log('dialog show!')
     }
   },
 
