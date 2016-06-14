@@ -1,6 +1,5 @@
 <template>
   <div>
-    alphabet-solfa
     <router-view></router-view>
   </div>
 </template>
