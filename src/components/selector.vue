@@ -13,12 +13,15 @@ export default {
     options: {
       type: Object,
       default: {}
+    },
+    defaultValue: {
+      type: [Number, String]
     }
   },
 
   data() {
     return {
-      value: 1
+      value: this.defaultValue
     };
   },
 
