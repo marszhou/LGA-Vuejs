@@ -26,7 +26,7 @@ export default {
   },
 
   created() {
-    console.log(this.options)
+    // console.log(this.options)
   }
 };
 </script>
