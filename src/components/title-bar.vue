@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row test-title">
       <div class="col-md-{{12 - controlColumns}} title">{{title}}</div>
-      <div class="col-md-{{controlColumns}} operation text-right"><slot></slot></div>
+      <div v-if='!noControls' class="col-md-{{controlColumns}} operation text-right"><slot></slot></div>
     </div>
   </div>
 </template>
@@ -19,6 +19,10 @@ export default {
     controlColumns: { // 控制按钮栏所占的栅格宽度
       type: Number,
       default: 1
+    },
+    noControls: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -26,6 +30,10 @@ export default {
     return {
 
     };
+  },
+
+  created() {
+
   }
 };
 </script>
