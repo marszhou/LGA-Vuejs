@@ -20,7 +20,7 @@
 
     <form class='form-horizontal'>
       <form-group label='选择类型'>
-        <selector :options='alphabetTestTypes'></selector>
+        <selector :options='alphabetTestTypes' :default-value='3'></selector>
       </form-group>
 
       <form-group label='选择调性'>
@@ -56,6 +56,55 @@
     <div v-for='(x,y) of my'>{{x}}{{y}}</div>
 
     <hr/>
+
+    <!-- Small modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Small modal</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <dialog title='hey' :dialog-id='dialogId'>
+      <button slot='trigger'
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#{{dialogId}}" >dialog</button>
+      <div slot='dialog-body'>hello world</div>
+
+    </dialog>
+
+    <dialog title='show by link' :dialog-id='dialogId2'>
+      <a slot='trigger'
+         href='###'
+         data-toggle="modal"
+         data-target="#{{dialogId2}}">link dialog</a>
+      <div slot='dialog-body'>hello world</div>
+    </dialog>
+
+    <dialog title='auto show' :dialog-id='dialogId3' :auto-show='true'>
+      <a slot='trigger'
+         href='###'
+         data-toggle="modal"
+         data-target="#{{dialogId3}}">auto dialog</a>
+      <div slot='dialog-body'>hello world</div>
+    </dialog>
+
   </div>
 </template>
 
@@ -72,10 +121,12 @@ import AlphabetSelector from 'components/alphabet-selector'
 import TestingMode from 'components/testing-mode'
 import TestingTitle from 'components/testing-title'
 import Selector from 'components/selector'
+import Dialog from 'components/dialog'
 
 import AlphabetSolfaFactory from 'models/factories/AlphabetSolfaFactory'
 
 import {AlphabetTestConsts} from 'components/consts/types'
+import {uniqueKey} from 'utils'
 
 // console.log(AlphabetTestConsts.typeLabels)
 
@@ -90,7 +141,8 @@ export default {
     AlphabetSelector,
     TestingMode,
     TestingTitle,
-    Selector
+    Selector,
+    Dialog
   },
 
   data() {
@@ -113,7 +165,11 @@ export default {
 
       my: {
         a: 1, b: 2
-      }
+      },
+
+      dialogId: uniqueKey(),
+      dialogId2: uniqueKey(),
+      dialogId3: uniqueKey()
     }
   },
 

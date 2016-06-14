@@ -1,0 +1,81 @@
+<template>
+  <span>
+    <slot name='trigger'></slot>
+
+    <div class="modal fade" :id="dialogId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{title}}</h4>
+          </div>
+          <div class="modal-body">
+            <slot name='dialog-body'></slot>
+          </div>
+          <div class="modal-footer">
+            <button v-for='button of buttons'
+                    type="button"
+                    class="btn btn-{{button.type}}"
+                    data-dismiss="modal">
+              {{button.label}}
+            </button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</template>
+
+<script>
+// import {uniqueKey} from 'utils'
+
+export default {
+
+  name: 'dialog',
+
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    buttons: {
+      type: Array,
+      default: () => [
+        {label: '关闭', type: 'default'},
+        {label: '保存', type: 'primary'},
+      ]
+    },
+    dialogId: {
+      type: String,
+      required: true
+    },
+
+    autoShow: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data() {
+    return {
+
+    };
+  },
+
+  methods: {
+    show() {
+      $('#' + this.dialogId).modal()
+    }
+  },
+
+  attached() {
+    if (this.autoShow) {
+      this.show()
+    }
+  }
+};
+</script>
+
+<style lang="css" scoped>
+</style>
