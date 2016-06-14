@@ -172,3 +172,7 @@ export function timeDisplay(ms) {
 export function percent(val) {
   return sprintf('%0.1f%%', val * 100)
 }
+
+export function uniqueKey() {
+  return Math.random().toString(36).substring(7)
+}
