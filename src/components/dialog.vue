@@ -68,8 +68,33 @@ export default {
   },
 
   methods: {
+    $dialog() {
+      return $('#' + this.dialogId)
+    },
     show() {
-      $('#' + this.dialogId).modal()
+      this.$dialog().modal()
+    },
+    toggle() {
+      this.$dialog().model('toggle')
+    },
+    close() {
+      this.$dialog().model('hide')
+    },
+    hide() {
+      this.close()
+    },
+
+    handleShow() {
+      console.log('dialog show')
+    },
+    handleShown() {
+      console.log('dialog shown')
+    },
+    handleHide() {
+      console.log('dialog hide')
+    },
+    handleHidden() {
+      console.log('dialog hidden')
     }
   },
 
@@ -78,6 +103,11 @@ export default {
   },
 
   attached() {
+    this.$dialog().on('show.bs.modal', this.handleShow)
+                  .on('shown.bs.modal', this.handleShown)
+                  .on('hide.bs.modal', this.handleHide)
+                  .on('hidden.bs.modal', this.handleHidden)
+
     // console.log('created', this.$el, jQuery(this.$el).children('.dialog-trigger').children())
     $(this.$el).children('.dialog-trigger')
                     .children()
@@ -86,6 +116,13 @@ export default {
     if (this.autoShow) {
       this.show()
     }
+  },
+
+  beforeDestroy() {
+    this.$dialog().off('show.bs.modal')
+                  .off('shown.bs.modal')
+                  .off('hide.bs.modal')
+                  .off('hidden.bs.modal')
   }
 };
 </script>
