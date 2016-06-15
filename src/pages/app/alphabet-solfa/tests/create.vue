@@ -36,6 +36,8 @@ import Selector from 'components/selector'
 
 import {AlphabetTestConsts, TestModeConsts} from 'components/consts/types'
 
+import TestingActions from 'actions/testing'
+
 
 export default {
 
@@ -46,6 +48,9 @@ export default {
     AlphabetSelector,
     TestingMode,
     Selector
+  },
+  vuex: {
+    actions: TestingActions
   },
   data() {
     return {
@@ -60,7 +65,7 @@ export default {
       let alphabet = this.$refs.alphabet.getValue()
       let testingMode = this.$refs.testingMode.getValue()
       let config = {testingType, alphabet, testingMode}
-      console.log(config)
+      this.create(config)
     }
   }
 };
