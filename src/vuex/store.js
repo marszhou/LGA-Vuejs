@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import createLogger from 'vuex/logger'
 
 import global from './modules/global'
+import testing from './modules/testing'
+
 console.log(global)
 
 Vue.use(Vuex)
@@ -15,7 +17,8 @@ Vue.config.debug = isDebug
 
 export default new Vuex.Store({
   modules: {
-    global
+    global,
+    testing
   },
   state: {isProduction, isDebug, usePushState},
   strict: isDebug,
