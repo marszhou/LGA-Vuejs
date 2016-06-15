@@ -15,3 +15,9 @@ export const global = cv([
   'TOGGLE_FOOTER',
   'SET_BREADCRUMB'
 ])
+
+export const testing = cv([
+  'CREATE',
+  'LIST',
+  'GET'
+])
