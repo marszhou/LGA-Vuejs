@@ -10,7 +10,7 @@ const state = {
   config: {}
 }
 
-const mutation = {
+const mutations = {
   [CREATE](state, config) {
     console.log('module testing create')
     state.config = config
@@ -24,5 +24,5 @@ const mutation = {
 }
 
 export default {
-  state, mutation
+  state, mutations
 }

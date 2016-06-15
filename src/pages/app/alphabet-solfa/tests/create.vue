@@ -24,6 +24,8 @@
       </div>
 
     </form>
+
+    {{ testingConfig | json}}
   </div>
 </template>
 
@@ -50,7 +52,10 @@ export default {
     Selector
   },
   vuex: {
-    actions: TestingActions
+    actions: TestingActions,
+    getters: {
+      testingConfig: state => state.testing.config
+    }
   },
   data() {
     return {
