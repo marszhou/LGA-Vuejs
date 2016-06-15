@@ -75,6 +75,9 @@ export default {
     };
   },
   methods: {
+    getValue() {
+      return this.checked
+    },
     handleCheckAll(e) {
       let checked = e.target.checked
 

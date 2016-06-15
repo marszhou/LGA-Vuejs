@@ -1,18 +1,20 @@
 <template>
-  <div class="col-md-6">
-    <select class="form-control" v-model='modeValue'>
-      <option v-for='(value, label) of data.modeLabels' :value='value'>{{label}}</option>
-    </select>
-  </div>
-
-  <div class='col-md-4' v-if='modeValue + "" === data.mode.TIME + ""'>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="0" v-model='number'>
-      <div class="input-group-addon">分钟</div>
+  <div>
+    <div class="col-md-6">
+      <select class="form-control" v-model='modeValue'>
+        <option v-for='(value, label) of data.modeLabels' :value='value'>{{label}}</option>
+      </select>
     </div>
-  </div>
-  <div class='col-md-4' v-if='modeValue + "" === data.mode.COUNT + ""'>
-    <input type="text" class="form-control" placeholder="0" v-model='number'>
+
+    <div class='col-md-4' v-if='modeValue + "" === data.mode.TIME + ""'>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="0" v-model='number'>
+        <div class="input-group-addon">分钟</div>
+      </div>
+    </div>
+    <div class='col-md-4' v-if='modeValue + "" === data.mode.COUNT + ""'>
+      <input type="text" class="form-control" placeholder="0" v-model='number'>
+    </div>
   </div>
 
 </template>
@@ -52,6 +54,12 @@ export default {
       set(val) {
         this.mode = +val
       }
+    }
+  },
+
+  methods: {
+    getValue() {
+      return this.value
     }
   }
 };

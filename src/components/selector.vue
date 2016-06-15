@@ -25,6 +25,12 @@ export default {
     };
   },
 
+  methods: {
+    getValue() {
+      return this.value
+    }
+  },
+
   created() {
     // console.log(this.options)
   }

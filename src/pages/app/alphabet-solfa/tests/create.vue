@@ -2,20 +2,24 @@
   <div>
     <form class='form-horizontal'>
       <form-group label='选择类型'>
-        <selector :options='alphabetTestTypes' :default-value='3'></selector>
+        <selector v-ref:testing-type :options='alphabetTestTypes' :default-value='3'></selector>
       </form-group>
 
       <form-group label='选择调性'>
-        <alphabet-selector type='checkbox' v-ref:tone :value='["a", "C"]'></alphabet-selector>
+        <alphabet-selector v-ref:alphabet type='checkbox' :value='["a", "C"]'></alphabet-selector>
       </form-group>
 
       <form-group label='选择测试模式' :multi='true'>
-        <testing-mode :mode.sync='testMode'></testing-mode>
+        <testing-mode v-ref:testing-mode :mode.sync='testMode'></testing-mode>
       </form-group>
 
       <div class="form-group">
         <div class='col-md-offset-2 col-md-2 col-xs-offset-0 col-xs-12'>
-          <button type="button" class="btn btn-info btn-block">创建</button>
+          <button type="button"
+                  class="btn btn-info btn-block"
+                  @click='handleCreate'>
+            创建
+          </button>
         </div>
       </div>
 
@@ -46,12 +50,17 @@ export default {
   data() {
     return {
       alphabetTestTypes: AlphabetTestConsts.typeLabels,
-      testMode: TestModeConsts.mode.COUNT
+      testMode: TestModeConsts.mode.COUNT,
+      config: {}
     };
   },
   methods: {
-    click() {
-      console.log(this.$parent, this.$root)
+    handleCreate() {
+      let testingType = this.$refs.testingType.getValue()
+      let alphabet = this.$refs.alphabet.getValue()
+      let testingMode = this.$refs.testingMode.getValue()
+      let config = {testingType, alphabet, testingMode}
+      console.log(config)
     }
   }
 };
