@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     getValue() {
-      return this.checked
+      return this.checked.slice()
     },
     handleCheckAll(e) {
       let checked = e.target.checked
