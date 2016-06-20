@@ -60,6 +60,7 @@ export default function(router, store) {
                 },
                 '/start/:test_id/': {
                   name: 'app-alphabet-solfa-tests-start',
+                  display: '开始',
                   component: require('pages/app/alphabet-solfa/tests/start'),
                   subRoutes: {
                     '/:question_id': {

@@ -26,7 +26,7 @@ module.exports = {
       'components': path.resolve(__dirname, '../src/components'),
       'pages': path.resolve(__dirname, '../src/pages'),
       'utils': path.resolve(__dirname, '../src/utils'),
-      'models': path.resolve(__dirname, '../src/models'),
+      'models': path.resolve(__dirname, '../src/vuex/models'),
       'actions': path.resolve(__dirname, '../src/vuex/actions'),
     }
   },

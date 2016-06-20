@@ -18,6 +18,7 @@ export const global = cv([
 
 export const testing = cv([
   'CREATE',
+  'ADD',
   'LIST',
   'GET'
 ])

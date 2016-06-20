@@ -1,8 +1,11 @@
 import {testing} from '../mutation-types'
 
+import {TestingFactory} from 'models/testing'
+
 export default {
   createTest({dispatch}, type, config) {
-    console.log('testing action create', testing)
-    dispatch(testing.CREATE, type, config)
+    let ret = TestingFactory(type, config)
+    dispatch(testing.ADD, ret)
+    return ret
   }
 }

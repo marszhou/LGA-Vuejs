@@ -5,6 +5,10 @@ export const Mode = {
   Multi: 'multi'
 }
 
+export function factory() {
+
+}
+
 export default class Question {
 
   /**

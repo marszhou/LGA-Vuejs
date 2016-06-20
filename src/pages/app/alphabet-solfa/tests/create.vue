@@ -25,7 +25,7 @@
 
     </form>
 
-    {{ testingConfig | json}}
+    {{ testing | json}}
   </div>
 </template>
 
@@ -37,11 +37,8 @@ import TestingMode from 'components/testing-mode'
 import Selector from 'components/selector'
 
 import {AlphabetTestConsts, TestModeConsts} from 'components/consts/types'
-
 import TestingActions from 'actions/testing'
-
 import {TestingTypes} from 'models/testing'
-
 
 export default {
 
@@ -55,15 +52,14 @@ export default {
   },
   vuex: {
     actions: TestingActions,
-    getters: {
-      testingConfig: state => state.testing.config
-    }
+    // getters: {
+    //   testing: state => state.testing.current
+    // }
   },
   data() {
     return {
       alphabetTestTypes: AlphabetTestConsts.typeLabels,
-      testMode: TestModeConsts.mode.TIME,
-      config: {}
+      testMode: TestModeConsts.mode.TIME
     };
   },
   methods: {
@@ -72,7 +68,14 @@ export default {
       let alphabet = this.$refs.alphabet.getValue()
       let testingMode = this.$refs.testingMode.getValue()
       let config = {testingType, alphabet, testingMode}
-      this.createTest(TestingTypes.alphabetSolfa, config)
+      let testing = this.createTest(TestingTypes.alphabetSolfa, config)
+
+      this.$route.router.go({
+        name: 'app-alphabet-solfa-tests-start',
+        params: {
+          test_id: testing.id
+        }
+      })
     }
   }
 };
