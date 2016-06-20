@@ -119,8 +119,6 @@ import TestingTitle from 'components/testing-title'
 import Selector from 'components/selector'
 import Dialog from 'components/dialog'
 
-import AlphabetSolfaFactory from 'models/factories/AlphabetSolfaFactory'
-
 import {AlphabetTestConsts} from 'components/consts/types'
 import {uniqueKey} from 'utils'
 
@@ -214,8 +212,7 @@ export default {
   },
 
   created() {
-    let q = AlphabetSolfaFactory()
-    console.log(q)
+
   }
 }
 </script>
