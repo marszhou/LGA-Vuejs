@@ -11,8 +11,8 @@ const state = {
 }
 
 const mutations = {
-  [CREATE](state, config) {
-    console.log('module testing create')
+  [CREATE](state, type, config) {
+    console.log('module testing create', arguments)
     state.config = config
   },
   [LIST](state) {
