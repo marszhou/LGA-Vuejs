@@ -6,7 +6,7 @@
       </form-group>
 
       <form-group label='选择调性'>
-        <alphabet-selector v-ref:alphabet type='checkbox' :value='["a", "C"]'></alphabet-selector>
+        <alphabet-selector v-ref:alphabet type='checkbox' :value='[]'></alphabet-selector>
       </form-group>
 
       <form-group label='选择测试模式' :multi='true'>
@@ -40,6 +40,8 @@ import {AlphabetTestConsts, TestModeConsts} from 'components/consts/types'
 
 import TestingActions from 'actions/testing'
 
+import {TestingTypes} from 'models/testing'
+
 
 export default {
 
@@ -60,7 +62,7 @@ export default {
   data() {
     return {
       alphabetTestTypes: AlphabetTestConsts.typeLabels,
-      testMode: TestModeConsts.mode.COUNT,
+      testMode: TestModeConsts.mode.TIME,
       config: {}
     };
   },
@@ -70,7 +72,7 @@ export default {
       let alphabet = this.$refs.alphabet.getValue()
       let testingMode = this.$refs.testingMode.getValue()
       let config = {testingType, alphabet, testingMode}
-      this.create(config)
+      this.createTest(TestingTypes.alphabetSolfa, config)
     }
   }
 };
