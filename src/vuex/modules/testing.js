@@ -1,14 +1,16 @@
 import * as types from '../mutation-types'
+import _ from 'lodash'
 
 const {
   CREATE,
   ADD,
   LIST,
-  GET
+  GET,
 } = types.testing
 
 const state = {
-  current: null
+  current: null,
+  list: []
 }
 
 const mutations = {
@@ -19,11 +21,14 @@ const mutations = {
   [LIST](state) {
 
   },
-  [GET](state) {
-
+  [GET](state, id) {
+    let testing = _.find(state.list, {id})
+    console.log(testing)
+    state.current = testing
   },
   [ADD](state, testing) {
     console.log('module testing add', arguments)
+    state.list.push(testing)
     state.current = testing
   },
 }

@@ -20,5 +20,5 @@ export const testing = cv([
   'CREATE',
   'ADD',
   'LIST',
-  'GET'
+  'GET',
 ])

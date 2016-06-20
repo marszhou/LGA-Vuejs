@@ -11,6 +11,9 @@ export default class Testing {
     this.config = config
     this.items = []
   }
+  valid() {
+    return this.config.alphabet.length > 0
+  }
 }
 
 export function TestingFactory(type, config) {
