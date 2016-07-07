@@ -24,7 +24,7 @@ module.exports = {
     // 'indent': [1, 2],
     'eol-last': 0,
     'camelcase': 0,
-    'comma-dangle': [1, 'never'],
+    'comma-dangle': [0, 'never'],
     // Doesn't work inside ES6 template strings
     'comma-spacing': 0,
     'consistent-return': 0,
@@ -48,6 +48,8 @@ module.exports = {
     'no-duplicate-case': 0,
     'no-func-assign': 0,
     'no-proto': 0,
+    'no-new': 0,
+    'no-new-func': 0,
     'no-sequences': 1,
     // Doesn't work with ES6 classes
     // https://github.com/babel/babel-eslint/issues/8

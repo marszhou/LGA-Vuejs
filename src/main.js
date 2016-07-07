@@ -1,19 +1,82 @@
 import Vue from 'vue'
 import Validator from 'vue-validator'
-import Router from 'vue-router'
+import VueI18n from 'vue-i18n'
+import VueRouter from 'vue-router'
 import {sync} from 'vuex-router-sync'
+import store from 'src/vuex/store'
+import configRouter from './routes'
 import App from './App'
+import {timeDisplay, percent} from 'utils'
+
+require('bootstrap/dist/css/bootstrap.css')
+require('bootstrap/dist/js/bootstrap.js')
+
 
 Vue.use(Validator)
+Vue.use(VueRouter)
+Vue.use(VueI18n)
 
-
-
-Vue.config.debug = true
-/* eslint-disable no-new */
-
-new Vue({
-  el: 'body',
-  components: { App }
+Vue.mixin({
+  methods: {
+    $$dispatch(eventName, args) {
+      var argsCopy = Array.prototype.slice.call(args)
+      argsCopy.unshift(eventName)
+      this.$dispatch.apply(this, argsCopy)
+    }
+  }
 })
 
-//
+Vue.filter('timeDisplay', timeDisplay)
+Vue.filter('percent', percent)
+
+let router = new VueRouter({
+  hashbang: true,
+  history: store.state.usePushState,
+  saveScrollPosition: true,
+  suppressTransitionError: store.state.isProduction,
+  transitionOnLoad: false,
+  linkActiveClass: 'current'
+})
+
+
+if (configRouter(router, store) !== false) {
+  sync(store, router)
+  window.router = router
+  try {
+    router.start(App, 'app')
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+// let Foo = Vue.extend({
+//   template: '<p>This is foo!</p>'
+// })
+
+// let Bar = Vue.extend({
+//   template: '<p>This is bar!</p>'
+// })
+
+// let router = new VueRouter({
+//   hashbang: true,
+//   history: store.state.usePushState,
+//   saveScrollPosition: true,
+//   suppressTransitionError: store.state.isProduction,
+//   transitionOnLoad: false,
+//   linkActiveClass: 'current'
+// })
+
+// router.map({
+//   '/foo': {
+//     component: Foo
+//   },
+//   '/bar': {
+//     component: Bar
+//   },
+//   '/home': {
+//     component: require('views/home')
+//   }
+// })
+// sync(store, router)
+// router.start(App, 'app')
+
