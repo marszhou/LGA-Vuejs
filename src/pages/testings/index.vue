@@ -1,13 +1,14 @@
 <template>
   <div>
-    test list
+    testings
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
 
-  name: 'test-list',
+  name: 'testings-index',
 
   data() {
     return {

@@ -1,13 +1,11 @@
 <template>
-  <div>
-    question {{$route.params.question_id}}
-  </div>
+  <div>222</div>
 </template>
 
 <script>
 export default {
 
-  name: 'question',
+  name: 'testing-list',
 
   data() {
     return {

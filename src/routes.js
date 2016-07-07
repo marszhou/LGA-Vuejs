@@ -31,6 +31,22 @@ export default function(router, store) {
       component: require('pages/bar')
     },
 
+    '/testings': {
+      name: 'testings',
+      component: require('pages/testings'),
+      display: '测试',
+      subRoutes: {
+        '/': {
+          name: 'testings-list',
+          component: require('pages/testings/list'),
+          display: '列表'
+        },
+        '/:testing_id': {
+          name: 'testing',
+          component: require('pages/testings/show')
+        }
+      }
+    },
 
     'app': {
       name: 'app',
@@ -43,44 +59,7 @@ export default function(router, store) {
         '/alphabet-solfa': {
           name: 'app-alphabet-solfa',
           component: require('pages/app/alphabet-solfa'),
-          display: '音名唱名转换',
-          subRoutes: {
-            '/': {
-              name: 'app-alphabet-solfa-home',
-              component: require('pages/app/alphabet-solfa/home')
-            },
-            '/tests': {
-              name: 'app-alphabet-solfa-tests',
-              component: require('pages/app/alphabet-solfa/tests'),
-              display: '测试',
-              subRoutes: {
-                '/': {
-                  name: 'app-alphabet-solfa-tests-list',
-                  component: require('pages/app/alphabet-solfa/tests/list')
-                },
-                '/create': {
-                  name: 'app-alphabet-solfa-tests-create',
-                  component: require('pages/app/alphabet-solfa/tests/create'),
-                  display: '创建'
-                },
-                '/start/:test_id/': {
-                  name: 'app-alphabet-solfa-tests-start',
-                  display: '开始',
-                  component: require('pages/app/alphabet-solfa/tests/start'),
-                  subRoutes: {
-                    '/:question_id': {
-                      name: 'app-alphabet-solfa-tests-start-question',
-                      component: require('pages/app/alphabet-solfa/tests/start/question')
-                    }
-                  }
-                },
-                '/:test_id': {
-                  name: 'app-alphabet-solfa-tests-detail',
-                  component: require('pages/app/alphabet-solfa/tests/detail')
-                }
-              }
-            }
-          }
+          display: '音名唱名转换'
         }
       } // 1
     }

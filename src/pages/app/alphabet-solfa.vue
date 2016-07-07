@@ -54,7 +54,7 @@ import _ from 'lodash'
 
 export default {
 
-  name: 'test-create',
+  name: 'alphabet-solfa',
   components: {
     // TitleBar,
     FormGroup,
@@ -98,9 +98,9 @@ export default {
 
       _.delay(() => {
         this.$route.router.go({
-          name: 'app-alphabet-solfa-tests-start',
+          name: 'testing',
           params: {
-            test_id: testing.id
+            testing_id: testing.id
           }
         })
       }, 500);

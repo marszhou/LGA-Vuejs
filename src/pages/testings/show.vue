@@ -1,6 +1,6 @@
 <template>
   <div>
-    test start {{$route.params.test_id}}
+    test start {{$route.params.testing_id}}
     {{ testing | json}}
     <button v-if='!start'>开始</button>
     <router-view></router-view>
@@ -13,7 +13,7 @@ import TestingActions from 'actions/testing'
 
 export default {
 
-  name: 'test-start',
+  name: 'testing-show',
 
   vuex: {
     actions: TestingActions,
@@ -29,7 +29,7 @@ export default {
   },
 
   created() {
-    this.setCurrent(this.$route.params.test_id)
+    this.setCurrent(this.$route.params.testing_id)
   }
 
 };
