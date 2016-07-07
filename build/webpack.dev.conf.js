@@ -15,7 +15,20 @@ module.exports = merge(baseWebpackConfig, {
     loaders: utils.styleLoaders()
   },
   // eval-source-map is faster for development
-  devtool: '#eval-source-map',
+  devtool: '#inline-source-map',
+  output: {
+    devtoolModuleFilenameTemplate: '[resourcePath]',
+    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
+    devtoolModuleFilenameTemplate: info => {
+      if (info.resource.match(/\.vue$/)) {
+        $filename = info.allLoaders.match(/type=script/)
+                  ? info.resourcePath : 'generated';
+      } else {
+        $filename = info.resourcePath;
+      }
+      return $filename;
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env
