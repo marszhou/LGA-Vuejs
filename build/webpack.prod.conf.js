@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
   module: {
@@ -77,6 +78,16 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        context: path.resolve(__dirname, '../src'),
+        from: {
+          glob: 'assets/**/*',
+          dot: true
+        },
+        to: 'static'
+      }
+    ])
   ]
 })
