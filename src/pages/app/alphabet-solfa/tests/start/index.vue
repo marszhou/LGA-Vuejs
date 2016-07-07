@@ -2,6 +2,7 @@
   <div>
     test start {{$route.params.test_id}}
     {{ testing | json}}
+    <button v-if='!start'>开始</button>
     <router-view></router-view>
   </div>
 </template>
@@ -23,7 +24,7 @@ export default {
 
   data() {
     return {
-
+      start: false
     };
   },
 

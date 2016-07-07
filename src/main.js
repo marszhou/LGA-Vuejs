@@ -40,8 +40,12 @@ let router = new VueRouter({
 
 if (configRouter(router, store) !== false) {
   sync(store, router)
-  router.start(App, 'app')
   window.router = router
+  try {
+    router.start(App, 'app')
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 // let Foo = Vue.extend({

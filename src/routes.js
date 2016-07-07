@@ -15,6 +15,11 @@ export default function(router, store) {
       component: require('pages/home'),
       display: '首页'
     },
+    '/404': {
+      name: 'not-found',
+      component: require('pages/404'),
+      display: '404'
+    },
     '/foo': {
       name: 'foo',
       component: require('pages/foo'),
@@ -84,7 +89,7 @@ export default function(router, store) {
   router.map(routes)
 
   router.redirect({
-    '*': '/'
+    '*': '/404'
   })
 
   // alias
@@ -94,7 +99,16 @@ export default function(router, store) {
 
   router.beforeEach((transition) => {
     getBreadCrumb(transition, store);
-    transition.next()
+    try {
+      transition.next()
+    } catch (e) {
+      if (e.message === 'NOT_FOUND') {
+        transition.redirect('/404')
+      } else {
+        transition.abort()
+        console.log('route caught', e)
+      }
+    }
   })
 
   function getBreadCrumb(transition, store) {

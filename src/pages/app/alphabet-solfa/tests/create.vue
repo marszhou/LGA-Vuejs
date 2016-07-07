@@ -2,13 +2,13 @@
   <div>
     <form class='form-horizontal'>
       <div class="alert alert-danger" role="alert" v-if='error'>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click='handleCloseError'><span aria-hidden="true">&times;</span></button>
         请完整填写数据
       </div>
 
       <div class="alert alert-success" role="alert" v-if='success'>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        测试创建成功，即将跳转...
+        测试创建成功，即将进入测试...
       </div>
 
       <form-group label='选择类型'>
@@ -104,6 +104,10 @@ export default {
           }
         })
       }, 500);
+    },
+
+    handleCloseError() {
+      this.error = false
     }
   }
 };

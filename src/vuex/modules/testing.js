@@ -1,5 +1,6 @@
 import * as types from '../mutation-types'
 import _ from 'lodash'
+import Testing from 'models/testing'
 
 const {
   CREATE,
@@ -22,12 +23,19 @@ const mutations = {
 
   },
   [GET](state, id) {
-    let testing = _.find(state.list, {id})
-    console.log(testing)
+    let testing = _.find(state.list, {id}) || Testing.load(id)
+    if (!testing) {
+      // console.log(window.router.go)
+      // window.router.go('/404')
+      throw new Error('NOT_FOUND')
+    }
     state.current = testing
   },
   [ADD](state, testing) {
     console.log('module testing add', arguments)
+
+    Testing.save(testing)
+
     state.list.push(testing)
     state.current = testing
   },
