@@ -1,19 +1,22 @@
 <template>
   <div>
-    test start {{$route.params.testing_id}}
-    {{ testing | json}}
-    <button v-if='!start'>开始</button>
-    <router-view></router-view>
+    <h2 v-if='testing'>测试 - {{testing.type.display}}</h2>
+    <testing-begin :testing='testing' v-if='testing && !testing.begun'></testing-begin>
   </div>
 </template>
 
 <script>
 
 import TestingActions from 'actions/testing'
+import TestingBegin from 'components/testing-begin'
 
 export default {
 
   name: 'testing-show',
+
+  components: {
+    TestingBegin
+  },
 
   vuex: {
     actions: TestingActions,
@@ -30,6 +33,11 @@ export default {
 
   created() {
     this.setCurrent(this.$route.params.testing_id)
+    console.log(this.testing)
+  },
+
+  attched() {
+
   }
 
 };

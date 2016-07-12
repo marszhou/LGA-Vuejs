@@ -43,7 +43,8 @@ export default function(router, store) {
         },
         '/:testing_id': {
           name: 'testing',
-          component: require('pages/testings/show')
+          component: require('pages/testings/show'),
+          display: '详情'
         }
       }
     },
