@@ -45,7 +45,7 @@ export default class Testing {
 
   getItemAt(index) {
     let length = this.items.length
-    if (index - 1 === length){
+    if (index - 1 === length) {
       // gen new item
       let item = this.genNewItem()
       this.items.push(item)

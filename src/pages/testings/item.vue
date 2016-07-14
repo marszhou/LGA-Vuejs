@@ -1,6 +1,9 @@
 <template>
   <div>
-  <h3>第{{index}}题</h3>
+    <h3>第{{index}}题</h3>
+    <div v-if='testing'>
+      {{testing.items.length}}
+    </div>
   </div>
 </template>
 
@@ -21,7 +24,8 @@ export default {
     getters: {
       index: (state) => +state.route.params.item_index,
       testing_id: (state) => state.route.params.testing_id,
-      testing: (state) => state.testing.current
+      testing: (state) => state.testing.current,
+      item: (state) => state.testingItem.item
     }
   },
 
