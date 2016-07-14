@@ -1,10 +1,13 @@
 <template>
   <div>
-xxx
+  <h3>第{{index}}题</h3>
   </div>
 </template>
 
 <script>
+import TestingModel from 'models/testing'
+import TestingItemActions from 'actions/testing-item'
+
 export default {
 
   name: 'testing-item-page',
@@ -14,12 +17,11 @@ export default {
   },
 
   vuex: {
-    actions: {
-
-    },
+    actions: TestingItemActions,
     getters: {
       index: (state) => +state.route.params.item_index,
-      testing_id: (state) => state.route.params.testing_id
+      testing_id: (state) => state.route.params.testing_id,
+      testing: (state) => state.testing.current
     }
   },
 
@@ -42,7 +44,8 @@ export default {
   },
 
   attached() {
-    console.log(this.index)
+    // console.log(this.testing.getItemAt(this.index))
+    this.getItemAt(this.testing, this.index)
   }
 };
 </script>

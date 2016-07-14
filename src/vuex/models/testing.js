@@ -2,6 +2,9 @@ import * as utils from 'utils'
 import BaseModel from './base-model'
 import {saveObj, loadObj} from 'utils/storage'
 import * as TypeConst from 'components/consts/types'
+import TestingItemModel from './testing-item'
+import QuestionModel from './question'
+import AnswerModel from './answer'
 
 const prefix = 'testing'
 
@@ -12,10 +15,8 @@ export const TestingTypes = {
   }
 }
 
-export default class Testing extends BaseModel {
+export default class Testing {
   constructor(type, config) {
-    super(type, config)
-
     this.id = null
     this.createdOn = Date.now()
     this.finished = false
@@ -30,7 +31,6 @@ export default class Testing extends BaseModel {
   }
 
   getTestingModeName() {
-    console.log(TypeConst.TestModeConsts)
     return TypeConst.TestModeConsts.modeLabels[this.config.testingMode.mode]
   }
 
@@ -41,6 +41,27 @@ export default class Testing extends BaseModel {
       return this.config.testingMode.number + '道'
     }
     return null
+  }
+
+  getItemAt(index) {
+    let length = this.items.length
+    if (index - 1 === length){
+      // gen new item
+      let item = this.genNewItem()
+      this.items.push(item)
+      return item
+    } else if (index -1 > length) {
+      // invalid
+      return null
+    } else {
+      return this.items[index - 1]
+    }
+  }
+
+  genNewItem() {
+    if (this.type.name === TestingTypes.alphabetSolfa.name) {
+      return newAlphaSolfaItem(this.config)
+    }
   }
 
   static load(id) {
@@ -63,6 +84,15 @@ export default class Testing extends BaseModel {
     saveObj(testing.id, testing, prefix)
   }
 
+}
+
+export function newAlphaSolfaItem(config) {
+  let q = {
+
+  }
+  let question = new QuestionModel(q)
+  let answer = new AnswerModel()
+  return new TestingItemModel({question, answer})
 }
 
 export function TestingFactory(type, config) {

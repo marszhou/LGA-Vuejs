@@ -23,3 +23,7 @@ export const testing = cv([
   'TESTING_GET',
   'TESTING_BEGIN'
 ])
+
+export const testingItem = cv([
+  'TESTING_ITEM_GET'
+])
