@@ -2,6 +2,8 @@
   <div>
     <h2 v-if='testing'>测试 - {{testing.type.display}}</h2>
     <testing-begin :testing='testing' v-if='testing && !testing.begun'></testing-begin>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -31,13 +33,8 @@ export default {
     };
   },
 
-  created() {
+  attached() {
     this.setCurrent(this.$route.params.testing_id)
-    console.log(this.testing)
-  },
-
-  attched() {
-
   }
 
 };

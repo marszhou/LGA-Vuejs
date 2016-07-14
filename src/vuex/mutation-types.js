@@ -17,8 +17,9 @@ export const global = cv([
 ])
 
 export const testing = cv([
-  'CREATE',
-  'ADD',
-  'LIST',
-  'GET',
+  'TESTING_CREATE',
+  'TESTING_ADD',
+  'TESTING_LIST',
+  'TESTING_GET',
+  'TESTING_BEGIN'
 ])

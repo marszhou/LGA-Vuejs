@@ -5,8 +5,6 @@ import createLogger from 'vuex/logger'
 import global from './modules/global'
 import testing from './modules/testing'
 
-console.log(global)
-
 Vue.use(Vuex)
 
 const isProduction = !!(0 || process.env.NODE_ENV === 'production')

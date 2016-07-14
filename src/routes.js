@@ -44,8 +44,15 @@ export default function(router, store) {
         '/:testing_id': {
           name: 'testing',
           component: require('pages/testings/show'),
-          display: '详情'
-        }
+          display: '详情',
+          subRoutes: {
+            '/begin/:item_index': {
+              name: 'testing-item',
+              component: require('pages/testings/item'),
+              display: '测试'
+            }
+          }
+        },
       }
     },
 
@@ -68,9 +75,9 @@ export default function(router, store) {
 
   router.map(routes)
 
-  router.redirect({
-    '*': '/404'
-  })
+  // router.redirect({
+  //   '*': '/404'
+  // })
 
   // alias
   router.alias({

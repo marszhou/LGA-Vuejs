@@ -24,8 +24,16 @@
 
 <script>
 import Testing from 'models/testing'
+import actions from 'actions/testing'
 
 export default {
+
+  vuex: {
+    actions: actions,
+    getters: {
+
+    }
+  },
 
   name: 'testing-begin',
 
@@ -35,7 +43,7 @@ export default {
 
   methods: {
     handleBegin() {
-
+      this.begin(this.testing)
     }
   },
 

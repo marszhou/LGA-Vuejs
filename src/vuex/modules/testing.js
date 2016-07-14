@@ -3,10 +3,11 @@ import _ from 'lodash'
 import Testing from 'models/testing'
 
 const {
-  CREATE,
-  ADD,
-  LIST,
-  GET,
+  TESTING_CREATE,
+  TESTING_ADD,
+  TESTING_LIST,
+  TESTING_GET,
+  TESTING_BEGIN
 } = types.testing
 
 const state = {
@@ -15,30 +16,30 @@ const state = {
 }
 
 const mutations = {
-  [CREATE](state, testing) {
+  [TESTING_CREATE](state, testing) {
     console.log('module testing create', arguments)
     state.current = testing
   },
-  [LIST](state) {
+  [TESTING_LIST](state) {
 
   },
-  [GET](state, id) {
+  [TESTING_GET](state, id) {
     let testing = _.find(state.list, {id}) || Testing.load(id)
     if (!testing) {
-      // console.log(window.router.go)
-      // window.router.go('/404')
       throw new Error('NOT_FOUND')
     }
     state.current = testing
   },
-  [ADD](state, testing) {
-    console.log('module testing add', arguments)
-
+  [TESTING_ADD](state, testing) {
     Testing.save(testing)
-
     state.list.push(testing)
     state.current = testing
   },
+  [TESTING_BEGIN](state, testing) {
+    testing.begun = true
+    state.current = testing
+    Testing.save(testing)
+  }
 }
 
 export default {
