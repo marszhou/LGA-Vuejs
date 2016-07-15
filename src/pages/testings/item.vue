@@ -2,7 +2,7 @@
   <div>
     <h3>第{{index}}题</h3>
     <div v-if='testing'>
-      {{testing.items.length}}
+      {{item | json}}
     </div>
   </div>
 </template>

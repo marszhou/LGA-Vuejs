@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 export const Mode = {
   Single: 'single',
-  Multi: 'multi'
+  Multiple: 'multiple'
 }
 
 export function factory() {
@@ -13,12 +13,14 @@ export default class Question {
 
   /**
    * title String
-   * mode String
+   * name
+   * mode String - single/multiple
    * options Array - 选项
    * corrects Array - 正确答案
    */
-  constructor({title, mode, options, corrects}) {
+  constructor({title, name, mode, options, corrects}) {
     this.title = title
+    this.name = name
     this.mode = mode
     this.options = options
     this.corrects = corrects

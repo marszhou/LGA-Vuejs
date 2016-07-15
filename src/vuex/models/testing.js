@@ -3,7 +3,7 @@ import BaseModel from './base-model'
 import {saveObj, loadObj} from 'utils/storage'
 import * as TypeConst from 'components/consts/types'
 import TestingItemModel from './testing-item'
-import QuestionModel from './question'
+import {default as QuestionModel, Mode as QuestionMode} from './question'
 import AnswerModel from './answer'
 
 const prefix = 'testing'
@@ -87,7 +87,25 @@ export default class Testing {
 }
 
 export function newAlphaSolfaItem(config) {
+  console.log(config)
+
+  const a = config.alphabet[Math.floor(Math.random() * config.alphabet.length)]
+  const t = (config.testingType === TypeConst.AlphabetTestConsts.types.MIXED)
+    ? (Math.random() > 0.5 ? TypeConst.AlphabetTestConsts.types.A2T : TypeConst.AlphabetTestConsts.types.T2A)
+    : config.testingType
+
+  function getTitle(type, alpha) {
+    const alphaName = (alpha.charCodeAt(0)>=97) ? `${alpha}小调` : `${alpha}大调`
+    if (type === TypeConst.AlphabetTestConsts.types.A2T) {
+      return `此音名在${alphaName}里的唱名是下面哪一个？`
+    } else {
+      return `此唱名在${alphaName}里的音名是下面哪一个？`
+    }
+  }
+
   let q = {
+    title: getTitle(t, a),
+    mode: QuestionMode.Single
 
   }
   let question = new QuestionModel(q)
