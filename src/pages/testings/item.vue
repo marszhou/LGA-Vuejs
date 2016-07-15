@@ -11,6 +11,9 @@
 import TestingModel from 'models/testing'
 import TestingItemActions from 'actions/testing-item'
 
+// import {generateRandomAlphaSolfaPair} from 'utils/music'
+// console.log('D大调', generateRandomAlphaSolfaPair('D'))
+
 export default {
 
   name: 'testing-item-page',
