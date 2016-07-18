@@ -90,8 +90,6 @@ export default class Testing {
 }
 
 export function newAlphaSolfaItem(config) {
-  console.log(config)
-
   // 随机获得当前item的调子
   const a = config.alphabet[Math.floor(Math.random() * config.alphabet.length)]
   // 获得当前item的模式：A2T / T2A
@@ -109,28 +107,33 @@ export function newAlphaSolfaItem(config) {
   }
 
   function getOptions(type, as, ss, correct) {
-    let as2 = as.slice(0, 0)
-    let ss2 = ss.slice(0, 0)
-    let s = type === TypeConst.AlphabetTestConsts.types.A2T ? ss : as
-    console.log(_.VERSION)
-    // debugger
-    // let choices = _.sampleSize(s, 4)
-    // console.log(choices)
+    let as2 = as.slice()
+    let ss2 = ss.slice()
+    let s = type === TypeConst.AlphabetTestConsts.types.A2T ? ss2 : as2
+    let ret = _.sampleSize(s, 4)
+
+    if (_.indexOf(ret, correct) === -1) {
+      ret.unshift(correct)
+      ret = ret.slice(0, 4)
+    }
+
+    return ret
   }
 
   let scaleOfA = getScaleOfAlpha(a)
   let scaleOfS = getScaleOfSolfa()
   let pair = generateRandomAlphaSolfaPair(a)
-  let correct = TypeConst.AlphabetTestConsts.types.A2T ? pair.s : pair.a
+  let correct = t === TypeConst.AlphabetTestConsts.types.A2T ? pair.s : pair.a
   let options = getOptions(t, scaleOfA, scaleOfS, correct)
 
   let q = {
     title: getTitle(t, a),
     mode: QuestionMode.Single,
     name: t === TypeConst.AlphabetTestConsts.types.A2T ? pair.a : pair.s,
-    corrects: [correct]
+    corrects: [correct],
+    options
   }
-  console.log(q)
+
   let question = new QuestionModel(q)
   let answer = new AnswerModel()
   return new TestingItemModel({question, answer})
