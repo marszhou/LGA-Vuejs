@@ -50,6 +50,10 @@ export function getScaleOfAlpha(a) {
   return ret
 }
 
+export function getScaleOfSolfa() {
+  return _.range(1, 8)
+}
+
 /**
  * a - 调名
  */

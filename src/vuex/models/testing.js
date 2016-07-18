@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import * as utils from 'utils'
 import BaseModel from './base-model'
 import {saveObj, loadObj} from 'utils/storage'
@@ -5,6 +6,8 @@ import * as TypeConst from 'components/consts/types'
 import TestingItemModel from './testing-item'
 import {default as QuestionModel, Mode as QuestionMode} from './question'
 import AnswerModel from './answer'
+
+import {getScaleOfAlpha, getScaleOfSolfa, generateRandomAlphaSolfaPair} from 'utils/music'
 
 const prefix = 'testing'
 
@@ -47,10 +50,10 @@ export default class Testing {
     let length = this.items.length
     if (index - 1 === length) {
       // gen new item
-      let item = this.genNewItem()
+      let item = this.generateNewItem()
       this.items.push(item)
       return item
-    } else if (index -1 > length) {
+    } else if (index - 1 > length) {
       // invalid
       return null
     } else {
@@ -58,7 +61,7 @@ export default class Testing {
     }
   }
 
-  genNewItem() {
+  generateNewItem() {
     if (this.type.name === TestingTypes.alphabetSolfa.name) {
       return newAlphaSolfaItem(this.config)
     }
@@ -89,7 +92,9 @@ export default class Testing {
 export function newAlphaSolfaItem(config) {
   console.log(config)
 
+  // 随机获得当前item的调子
   const a = config.alphabet[Math.floor(Math.random() * config.alphabet.length)]
+  // 获得当前item的模式：A2T / T2A
   const t = (config.testingType === TypeConst.AlphabetTestConsts.types.MIXED)
     ? (Math.random() > 0.5 ? TypeConst.AlphabetTestConsts.types.A2T : TypeConst.AlphabetTestConsts.types.T2A)
     : config.testingType
@@ -103,11 +108,29 @@ export function newAlphaSolfaItem(config) {
     }
   }
 
+  function getOptions(type, as, ss, correct) {
+    let as2 = as.slice(0, 0)
+    let ss2 = ss.slice(0, 0)
+    let s = type === TypeConst.AlphabetTestConsts.types.A2T ? ss : as
+    console.log(_.VERSION)
+    // debugger
+    // let choices = _.sampleSize(s, 4)
+    // console.log(choices)
+  }
+
+  let scaleOfA = getScaleOfAlpha(a)
+  let scaleOfS = getScaleOfSolfa()
+  let pair = generateRandomAlphaSolfaPair(a)
+  let correct = TypeConst.AlphabetTestConsts.types.A2T ? pair.s : pair.a
+  let options = getOptions(t, scaleOfA, scaleOfS, correct)
+
   let q = {
     title: getTitle(t, a),
-    mode: QuestionMode.Single
-
+    mode: QuestionMode.Single,
+    name: t === TypeConst.AlphabetTestConsts.types.A2T ? pair.a : pair.s,
+    corrects: [correct]
   }
+  console.log(q)
   let question = new QuestionModel(q)
   let answer = new AnswerModel()
   return new TestingItemModel({question, answer})

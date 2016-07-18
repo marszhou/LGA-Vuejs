@@ -12,8 +12,8 @@ export function factory() {
 export default class Question {
 
   /**
-   * title String
-   * name
+   * title String - 题目问题
+   * name - 题目主干
    * mode String - single/multiple
    * options Array - 选项
    * corrects Array - 正确答案
