@@ -37,7 +37,7 @@ export function getScaleOfAlpha(a) {
   } else {
     seq = minorDistance
   }
-  ret = _.reduce(_.range(1, 8), (r, k) => {
+  ret = _.reduce(_.range(1, 7), (r, k) => {
     i = i + seq[k - 1]
     if (i>=allAlphas.length) {
       i = i - allAlphas.length
