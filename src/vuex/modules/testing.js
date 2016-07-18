@@ -31,9 +31,9 @@ const mutations = {
     state.current = testing
   },
   [TESTING_ADD](state, testing) {
-    Testing.save(testing)
     state.list.push(testing)
     state.current = testing
+    Testing.save(testing)
   },
   [TESTING_BEGIN](state, testing) {
     testing.begun = true
