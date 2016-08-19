@@ -8,18 +8,18 @@ export default {
     if (!t.valid()) {
       return null
     } else {
-      dispatch(testing.TESTING_ADD, t)
+      dispatch(testing.ADD, t)
     }
 
     return t
   },
 
   setCurrent({dispatch}, id) {
-    dispatch(testing.TESTING_GET, id)
+    dispatch(testing.GET, id)
   },
 
   begin({dispatch}, t) {
-    dispatch(testing.TESTING_BEGIN, t)
+    dispatch(testing.BEGIN, t)
 
     window.router.go({
       name: 'testing-item',

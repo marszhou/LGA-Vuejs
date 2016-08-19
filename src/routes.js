@@ -44,15 +44,13 @@ export default function(router, store) {
         '/:testing_id': {
           name: 'testing',
           component: require('pages/testings/show'),
-          display: '详情',
-          subRoutes: {
-            '/begin/:item_index': {
-              name: 'testing-item',
-              component: require('pages/testings/item'),
-              display: '测试'
-            }
-          }
+          display: '详情'
         },
+        '/:testing_id/begin/:item_index': {
+          name: 'testing-item',
+          component: require('pages/testings/item'),
+          display: '测试'
+        }
       }
     },
 
@@ -80,9 +78,9 @@ export default function(router, store) {
   // })
 
   // alias
-  router.alias({
-    '/home': '/'
-  })
+  // router.alias({
+  //   '/home': '/'
+  // })
 
   router.beforeEach((transition) => {
     getBreadCrumb(transition, store);

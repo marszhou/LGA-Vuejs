@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import * as utils from 'utils'
-import BaseModel from './base-model'
+// import BaseModel from './base-model'
 import {saveObj, loadObj} from 'utils/storage'
 import * as TypeConst from 'components/consts/types'
 import TestingItemModel from './testing-item'

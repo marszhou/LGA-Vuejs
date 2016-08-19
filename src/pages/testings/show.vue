@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 v-if='testing'>测试 - {{testing.type.display}}</h2>
-    <testing-begin :testing='testing' v-if='testing && !testing.begun'></testing-begin>
+    <testing-begin :testing='testing' v-if='testing'></testing-begin>
 
     <router-view></router-view>
   </div>

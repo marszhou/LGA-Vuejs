@@ -1,29 +1,21 @@
 import _ from 'lodash'
-
-const cv = (arr) => {
-  return _.reduce(arr, (ret, val) => {
-    if (val) {
-      ret[val] = val
-    }
-    return ret
-  }, {})
-}
+import {resourceMaker} from 'utils'
 
 // 全局动作
-export const global = cv([
+export const global = resourceMaker([], [
   'SET_TITLE',
   'TOGGLE_FOOTER',
   'SET_BREADCRUMB'
 ])
 
-export const testing = cv([
-  'TESTING_CREATE',
-  'TESTING_ADD',
-  'TESTING_LIST',
-  'TESTING_GET',
-  'TESTING_BEGIN'
-])
+export const testing = resourceMaker([], [
+  'CREATE',
+  'ADD',
+  'LIST',
+  'GET',
+  'BEGIN'
+], 'TESTING_')
 
-export const testingItem = cv([
-  'TESTING_ITEM_GET'
-])
+export const testingItem = resourceMaker([], [
+  'GET'
+], 'TESTING_ITEM_')

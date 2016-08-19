@@ -2,24 +2,22 @@
   <div v-if='testing.type.name === "alphabet-solfa"'>
 
     <div class='row'>
-      <div class='col-md-2'>类型</div>
-      <div class='col-md-10'>{{testing.config.testingType}}</div>
+      <div class='col-xs-4'><h4>类型</h4></div>
+      <div class='col-xs-8'><h4>{{testing.config.testingType}}</h4></div>
     </div>
 
     <div class='row'>
-      <div class='col-md-2'>调性</div>
-      <div class='col-md-10'>{{testing.config.alphabet}}</div>
+      <div class='col-xs-4'><h4>调性</h4></div>
+      <div class='col-xs-8'><h4>{{testing.config.alphabet}}</h4></div>
     </div>
 
     <div class='row'>
-      <div class='col-md-2'>测试模式</div>
-      <div class='col-md-10'>{{testing.getTestingModeName()}} {{testing.getTestingModeNumber()}}</div>
+      <div class='col-xs-4'><h4>测试模式</h4></div>
+      <div class='col-xs-8'><h4>{{testing.getTestingModeName()}} {{testing.getTestingModeNumber()}}</h4></div>
     </div>
 
     <button class='btn btn-info btn-block' type='button' @click='handleBegin'>开始</button>
   </div>
-
-
 </template>
 
 <script>
@@ -43,6 +41,7 @@ export default {
 
   methods: {
     handleBegin() {
+      // console.log(this.testing)
       this.begin(this.testing)
     }
   },
