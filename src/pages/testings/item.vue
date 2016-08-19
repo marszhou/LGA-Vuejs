@@ -1,7 +1,18 @@
 <template>
   <div>
-    <h3>第{{index}}题</h3>
-    <div v-if='testing'>
+    <div v-if='testing && item'>
+      <div class="jumbotron">
+        <p>{{index}}.{{item.question.title}}</p>
+        <h1 style='text-align: center'>{{item.question.name}}</h1>
+      </div>
+
+      <div class="list-group">
+        <a @click.prevent.stop='handleClickAnswer($index, o)' href="#" class="list-group-item" v-for='o of item.question.options'>
+          <h4 class="list-group-item-heading" style='text-align: center'>{{o}}</h4>
+        </a>
+      </div>
+
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Next &gt;</a></p>
       {{item | json}}
     </div>
   </div>
@@ -26,7 +37,8 @@ export default {
   vuex: {
     actions: {
       getItemAt: TestingItemActions.getItemAt,
-      setCurrent: TestingActions.setCurrent
+      setCurrent: TestingActions.setCurrent,
+      setAnswer: TestingItemActions.setAnswer
     },
     getters: {
       index: (state) => +state.route.params.item_index,
@@ -47,7 +59,9 @@ export default {
   },
 
   methods: {
-
+    handleClickAnswer(index, option) {
+      this.setAnswer(this.item, [option])
+    }
   },
 
   route: {

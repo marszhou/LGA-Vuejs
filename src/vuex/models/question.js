@@ -26,7 +26,7 @@ export default class Question {
     this.corrects = corrects
   }
 
-  test(answer) {
-    return _.difference(this.corrects, answer.selection)
+  static test(question, answer) {
+    return _.difference(question.corrects, answer).length === 0
   }
 }

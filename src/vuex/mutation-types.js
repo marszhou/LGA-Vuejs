@@ -17,5 +17,6 @@ export const testing = resourceMaker([], [
 ], 'TESTING_')
 
 export const testingItem = resourceMaker([], [
-  'GET'
+  'GET',
+  'ANSWER'
 ], 'TESTING_ITEM_')
