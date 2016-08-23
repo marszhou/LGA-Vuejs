@@ -28,5 +28,9 @@ export default {
 
   update({dispatch}, t, props) {
     dispatch(testing.UPDATE, t, props)
+  },
+
+  nextItem({dispatch}, t, currentItem, currentItemIndex) {
+    dispatch(testing.NEXT, t, currentItem, currentItemIndex)
   }
 }

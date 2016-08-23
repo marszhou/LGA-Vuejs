@@ -10,7 +10,8 @@ const {
   BEGIN,
   FINISHED,
   CONTINUE,
-  UPDATE
+  UPDATE,
+  NEXT
 } = types.testing
 
 const state = {
@@ -27,7 +28,13 @@ const mutations = {
 
   },
   [GET](state, id) {
+    if (state.current && state.current.id === id) {
+      return
+    }
     let testing = _.find(state.list, {id}) || Testing.load(id)
+    if (state.list.indexOf(testing) === -1) {
+      state.list.push(testing)
+    }
     if (!testing) {
       throw new Error('NOT_FOUND')
     }
@@ -70,6 +77,15 @@ const mutations = {
   },
   [UPDATE](state, testing, props) {
     state.current = _.assign(testing, props)
+    Testing.save(testing)
+  },
+
+  [NEXT](state, testing, currentItem, currentItemIndex) {
+    currentItem.confirmed = true
+    window.router.go({
+      name: 'testing-item',
+      params: {item_index: currentItemIndex + 1}
+    })
     Testing.save(testing)
   }
 }

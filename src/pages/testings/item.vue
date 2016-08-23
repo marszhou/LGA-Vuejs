@@ -56,7 +56,8 @@ export default {
       getItemAt: TestingItemActions.getItemAt,
       setCurrent: TestingActions.setCurrent,
       setAnswer: TestingItemActions.setAnswer,
-      updateTesting: TestingActions.update
+      updateTesting: TestingActions.update,
+      nextItem: TestingActions.nextItem
     },
     getters: {
       index: (state) => +state.route.params.item_index,
@@ -81,7 +82,8 @@ export default {
       this.setAnswer(this.item, [option])
     },
     handleClickNext() {
-      this.$route.router.go({name: 'testing-item', params: {item_index: Number(this.$route.params.item_index) + 1}})
+      // debugger
+      this.nextItem(this.testing, this.item, Number(this.$route.params.item_index))
     },
     handleCountdownTimeout() {
       console.log('handleCountdownTimeout')
