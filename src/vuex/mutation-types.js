@@ -13,7 +13,10 @@ export const testing = resourceMaker([], [
   'ADD',
   'LIST',
   'GET',
-  'BEGIN'
+  'BEGIN',
+  'FINISHED',
+  'CONTINUE',
+  'VIEW'
 ], 'TESTING_')
 
 export const testingItem = resourceMaker([], [

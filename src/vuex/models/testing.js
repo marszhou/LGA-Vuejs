@@ -22,10 +22,11 @@ export default class Testing {
   constructor(type, config) {
     this.id = null
     this.createdOn = Date.now() // 创建时间
-    this.startOn = 0            // 开始时间
-    this.endOn = 0              // 结束时间
     this.finished = false       // 完成？
+    this.finishedOn = 0         // 结束时间
     this.begun = false          // 开始？
+    this.beginOn = 0            // 开始时间
+    this.used    = 0            // 已经用时
     this.type = type            // 类型
     this.config = config        // 测试的配置
     this.items = []             // 试题列表
@@ -67,6 +68,20 @@ export default class Testing {
     if (this.type.name === TestingTypes.alphabetSolfa.name) {
       return newAlphaSolfaItem(this.config)
     }
+  }
+
+  getLastItemIndex() {
+    let ret = 0
+    this.items.forEach((item, index) => {
+      if (!item.confirmed) {
+        ret = index + 1
+        return false
+      } else {
+        ret = index + 2
+      }
+    })
+
+    return ret
   }
 
   static load(id) {

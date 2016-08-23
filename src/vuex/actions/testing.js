@@ -20,13 +20,9 @@ export default {
 
   begin({dispatch}, t) {
     dispatch(testing.BEGIN, t)
+  },
 
-    window.router.go({
-      name: 'testing-item',
-      params: {
-        testing_id: t.id,
-        item_index: 1
-      }
-    })
+  continue({dispatch}, t) {
+    dispatch(testing.CONTINUE, t)
   }
 }

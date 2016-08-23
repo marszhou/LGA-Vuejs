@@ -7,7 +7,9 @@ const {
   ADD,
   LIST,
   GET,
-  BEGIN
+  BEGIN,
+  FINISHED,
+  CONTINUE
 } = types.testing
 
 const state = {
@@ -37,8 +39,33 @@ const mutations = {
   },
   [BEGIN](state, testing) {
     testing.begun = true
+    testing.startOn = Date.now()
     state.current = testing
     Testing.save(testing)
+
+    window.router.go({
+      name: 'testing-item',
+      params: {
+        testing_id: testing.id,
+        item_index: 1
+      }
+    })
+  },
+  [FINISHED](state, testing) {
+    testing.finished = true
+    testing.finishedOn = Date.now()
+    Testing.save(testing)
+  },
+  [CONTINUE](state, testing) {
+    state.current = testing
+
+    window.router.go({
+      name: 'testing-item',
+      params: {
+        testing_id: testing.id,
+        item_index: testing.getLastItemIndex()
+      }
+    })
   }
 }
 
