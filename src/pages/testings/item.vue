@@ -2,7 +2,10 @@
   <div>
     <div v-if='testing && item'>
       <countdown v-if='testing.config.testingMode.mode === 1'
-                 :duration='testing.config.testingMode.number * 60'></countdown>
+                 :duration='testing.config.testingMode.number * 60'
+                 :base.once='testing.used'
+                 @countdown:section='handleCountdownSection'
+                 @countdown:timeout='handleCountdownTimeout'></countdown>
       <progress-bar></progress-bar>
       <div class="jumbotron">
         <p>{{index}}.{{item.question.title}}</p>
@@ -78,6 +81,12 @@ export default {
     },
     handleClickNext() {
       this.$route.router.go({name: 'testing-item', params: {item_index: Number(this.$route.params.item_index) + 1}})
+    },
+    handleCountdownTimeout() {
+      console.log('handleCountdownTimeout')
+    },
+    handleCountdownSection(current) {
+      console.log('handleCountdownSection', current)
     }
   },
 

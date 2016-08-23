@@ -16,7 +16,9 @@
       </div>
     </div>
 
-    <button class='btn btn-info btn-block' type='button' @click='handleBegin'>开始</button>
+    <button class='btn btn-info btn-block' type='button' @click='handleBegin' v-if='!testing.begun'>开始</button>
+    <button class='btn btn-info btn-block' type='button' @click='handleContinue' v-if='!testing.finished && testing.begun'>继续</button>
+    <button class='btn btn-info btn-block' type='button' @click='handleView' v-if='testing.finished'>查看结果</button>
   </div>
 </template>
 
@@ -43,6 +45,12 @@ export default {
     handleBegin() {
       // console.log(this.testing)
       this.begin(this.testing)
+    },
+    handleContinue() {
+      this.continue(this.testing)
+    },
+    handleView() {
+
     }
   },
 
