@@ -21,12 +21,14 @@ export const TestingTypes = {
 export default class Testing {
   constructor(type, config) {
     this.id = null
-    this.createdOn = Date.now()
-    this.finished = false
-    this.begun = false
-    this.type = type
-    this.config = config
-    this.items = []
+    this.createdOn = Date.now() // 创建时间
+    this.startOn = 0            // 开始时间
+    this.endOn = 0              // 结束时间
+    this.finished = false       // 完成？
+    this.begun = false          // 开始？
+    this.type = type            // 类型
+    this.config = config        // 测试的配置
+    this.items = []             // 试题列表
   }
 
   valid() {
