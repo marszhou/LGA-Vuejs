@@ -16,7 +16,8 @@ export const testing = resourceMaker([], [
   'BEGIN',
   'FINISHED',
   'CONTINUE',
-  'VIEW'
+  'VIEW',
+  'UPDATE'
 ], 'TESTING_')
 
 export const testingItem = resourceMaker([], [

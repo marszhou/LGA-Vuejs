@@ -7,7 +7,7 @@ import date from 'utils/date'
 const sectionLength = 15
 
 export default {
-  name: 'component_name',
+  name: 'countdown',
 
   components: {
 

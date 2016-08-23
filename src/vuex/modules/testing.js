@@ -9,7 +9,8 @@ const {
   GET,
   BEGIN,
   FINISHED,
-  CONTINUE
+  CONTINUE,
+  UPDATE
 } = types.testing
 
 const state = {
@@ -66,6 +67,10 @@ const mutations = {
         item_index: testing.getLastItemIndex()
       }
     })
+  },
+  [UPDATE](state, testing, props) {
+    state.current = _.assign(testing, props)
+    Testing.save(testing)
   }
 }
 

@@ -24,5 +24,9 @@ export default {
 
   continue({dispatch}, t) {
     dispatch(testing.CONTINUE, t)
+  },
+
+  update({dispatch}, t, props) {
+    dispatch(testing.UPDATE, t, props)
   }
 }

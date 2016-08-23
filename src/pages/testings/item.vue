@@ -55,7 +55,8 @@ export default {
     actions: {
       getItemAt: TestingItemActions.getItemAt,
       setCurrent: TestingActions.setCurrent,
-      setAnswer: TestingItemActions.setAnswer
+      setAnswer: TestingItemActions.setAnswer,
+      updateTesting: TestingActions.update
     },
     getters: {
       index: (state) => +state.route.params.item_index,
@@ -86,6 +87,7 @@ export default {
       console.log('handleCountdownTimeout')
     },
     handleCountdownSection(current) {
+      this.updateTesting(this.testing, {used: current})
       console.log('handleCountdownSection', current)
     }
   },
