@@ -4,6 +4,7 @@
 
 <script>
 import date from 'utils/date'
+const sectionLength = 15
 
 export default {
   name: 'component_name',
@@ -14,7 +15,7 @@ export default {
 
   props: {
     duration: Number,
-    startAt: Number
+    base: Number
   },
 
   vuex: {
@@ -34,8 +35,11 @@ export default {
   },
 
   computed: {
+    elapse: function() {
+      return (this.now - this.start) / 1000 + this.base
+    },
     current: function() {
-      let diff = (this.now - this.start) / 1000
+      let diff = this.elapse
       return date.format('i:s', diff)
     },
     durationDisplay() {
@@ -49,10 +53,17 @@ export default {
   methods: {
     timing() {
       this.now = Date.now()
-      if (this.duration && (this.now - this.start) / 1000 >= this.duration) {
+      let diff = this.elapse
+      let s = Math.floor(diff/sectionLength)
+
+      if (diff >= this.duration) {
         this.$dispatch('countdown:timeout')
       } else {
         this.timer = setTimeout(this.timing, 50)
+      }
+      if (this.s !== s) {
+        this.s = s
+        this.$dispatch('countdown:section', diff)
       }
       this.$dispatch('countdown:tick')
     }
