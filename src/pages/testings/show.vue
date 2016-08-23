@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 v-if='testing'>测试 - {{testing.type.display}}</h2>
-    <testing-begin :testing='testing' v-if='testing'></testing-begin>
+    <testing-info :testing='testing' v-if='testing'></testing-begin>
 
   </div>
 </template>
@@ -9,14 +9,14 @@
 <script>
 
 import TestingActions from 'actions/testing'
-import TestingBegin from 'components/testing-begin'
+import TestingInfo from 'components/testing-info'
 
 export default {
 
   name: 'testing-show',
 
   components: {
-    TestingBegin
+    TestingInfo
   },
 
   vuex: {
