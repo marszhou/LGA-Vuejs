@@ -6,8 +6,8 @@
       <button class='btn btn-info btn-block' type='button' @click='handleBegin' v-if='!testing.begun'>开始</button>
       <button class='btn btn-info btn-block' type='button' @click='handleContinue' v-if='!testing.finished && testing.begun'>继续</button>
       <div class="btn-group" role="group"  v-if='testing.finished'>
-        <button class='btn btn-info ' type='button' @click='handleView'>查看结果</button>
-        <button class='btn btn-success ' type='button' @click='handleCreate'>新测试</button>
+        <button class='btn btn-info ' type='button' @click.stop.prevent='handleView'>查看结果</button>
+        <button class='btn btn-success ' type='button' @click.stop.prevent='handleCreate'>新测试</button>
       </div>
     </template>
   </div>

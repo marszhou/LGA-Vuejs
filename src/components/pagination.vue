@@ -2,7 +2,7 @@
 <nav class='text-center'>
   <ul class="pagination">
     <li v-if='hasPrevious'>
-      <a href="#" aria-label="Previous" @click='handlePrevious'>
+      <a href="#" aria-label="Previous" @click.prevent.stop='handlePrevious'>
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -12,17 +12,17 @@
     </template>
 
     <li v-for='page of displayedPages'>
-      <a href="#" v-if='page !== current' @click='handlePageClick(page, $event)'>{{page}}</a>
+      <a href="#" v-if='page !== current' @click.prevent.stop='handlePageClick(page, $event)'>{{page}}</a>
       <span v-else class='page-current'>{{page}}</span>
     </li>
 
     <template v-if='hasLast'>
       <li v-if='hasLastEllipsis'><span>...</span></li>
-      <li><a href='#' @click='handlePageClick(pageCount, $event)'>{{pageCount}}</a></li>
+      <li><a href='#' @click.prevent.stop='handlePageClick(pageCount, $event)'>{{pageCount}}</a></li>
     </template>
 
     <li v-if='hasNext'>
-      <a href="#" aria-label="Next" @click='handleNext'>
+      <a href="#" aria-label="Next" @click.prevent.stop='handleNext'>
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

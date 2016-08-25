@@ -31,13 +31,13 @@
         <a class="btn btn-primary btn-lg"
            href="#"
            role="button"
-           @click='handleClickNext'
+           @click.prevent.stop='handleClickNext'
            v-if='!finished'>Next &gt;</a>
         <a v-if='showFinishBtn'
            class="btn btn-danger btn-lg"
            href='#'
            role='button'
-           @click='handleClickFinish'>完成</a>
+           @click.prevent.stop='handleClickFinish'>完成</a>
       </p>
     </div>
   </div>
