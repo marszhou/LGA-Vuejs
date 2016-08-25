@@ -1,7 +1,7 @@
 export default class Answer {
-  constructor() {
-    this.selection = []
-    this.result = false
+  constructor(selection=[], result=false) {
+    this.selection = selection
+    this.result = result
   }
 
   setSelection(selection) {

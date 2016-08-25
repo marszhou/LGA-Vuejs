@@ -176,3 +176,19 @@ export function percent(val) {
 export function uniqueKey() {
   return Math.random().toString(36).substring(7)
 }
+
+export function resourceMaker(ajaxResources=[], normalResources=[], prefix='') {
+  let ret = _.reduce(ajaxResources, (ret, val) => {
+    ret[`${val}`] = `${prefix}${val}`
+    ret[`${val}_REQ`] = `${prefix}${val}_REQ`
+    ret[`${val}_FAIL`] = `${prefix}${val}_FAIL`
+    return ret
+  }, {})
+
+  ret = _.reduce(normalResources, (ret, val) => {
+    ret[`${val}`] = `${prefix}${val}`
+    return ret
+  }, ret)
+
+  return ret
+}
