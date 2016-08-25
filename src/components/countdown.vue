@@ -56,7 +56,7 @@ export default {
       let diff = this.elapse
       let s = Math.floor(diff/sectionLength)
 
-      if (diff >= this.duration) {
+      if (this.duration > 0 && diff >= this.duration) {
         this.$dispatch('countdown:timeout')
       } else {
         this.timer = setTimeout(this.timing, 50)

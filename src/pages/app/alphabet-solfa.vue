@@ -34,9 +34,9 @@
       </div>
 
     </form>
-
+<!--
     {{ testing | json}}
-    {{ error }}
+    {{ error }} -->
   </div>
 </template>
 

@@ -1,4 +1,4 @@
-import _ from 'lodash'
+// import _ from 'lodash'
 import {resourceMaker} from 'utils'
 
 // 全局动作
@@ -14,7 +14,7 @@ export const testing = resourceMaker([], [
   'LIST',
   'GET',
   'BEGIN',
-  'FINISHED',
+  'FINISH',
   'CONTINUE',
   'VIEW',
   'UPDATE',

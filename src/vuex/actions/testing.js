@@ -32,5 +32,9 @@ export default {
 
   nextItem({dispatch}, t, currentItem, currentItemIndex) {
     dispatch(testing.NEXT, t, currentItem, currentItemIndex)
+  },
+
+  finish({dispatch}, t) {
+    dispatch(testing.FINISH, t)
   }
 }

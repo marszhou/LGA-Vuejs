@@ -8,7 +8,7 @@ const {
   LIST,
   GET,
   BEGIN,
-  FINISHED,
+  FINISH,
   CONTINUE,
   UPDATE,
   NEXT
@@ -59,10 +59,18 @@ const mutations = {
       }
     })
   },
-  [FINISHED](state, testing) {
+  [FINISH](state, testing) {
     testing.finished = true
     testing.finishedOn = Date.now()
+    _.last(testing.items).confirmed = true
     Testing.save(testing)
+
+    window.router.go({
+      name: 'testing',
+      params: {
+        testing_id: testing.id
+      }
+    })
   },
   [CONTINUE](state, testing) {
     state.current = testing

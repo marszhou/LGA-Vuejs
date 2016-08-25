@@ -1,12 +1,15 @@
 <template>
   <div>
     <div v-if='testing && item'>
-      <countdown v-if='testing.config.testingMode.mode === 1'
-                 :duration='testing.config.testingMode.number * 60'
+      <countdown :duration='countdownDuration'
                  :base.once='testing.used'
                  @countdown:section='handleCountdownSection'
                  @countdown:timeout='handleCountdownTimeout'></countdown>
-      <progress-bar></progress-bar>
+      <progress-bar :min='progressMin'
+                    :max='progressMax'
+                    :current='progressCurrent'
+                    v-if='testing.config.testingMode.mode !== 3'>
+      </progress-bar>
       <div class="jumbotron">
         <p>{{index}}.{{item.question.title}}</p>
         <h1 style='text-align: center'>{{item.question.name}}</h1>
@@ -23,9 +26,18 @@
       </div>
 
       <p>
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        <a class="btn btn-primary btn-lg" href="#" role="button" @click='handleClickNext'>Next &gt;</a>
+        <!-- <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+        <a class="btn btn-primary btn-lg"
+           href="#"
+           role="button"
+           @click='handleClickNext'
+           v-if='!finished'>Next &gt;</a>
+        <a v-if='showFinishBtn'
+           class="btn btn-danger btn-lg"
+           href='#'
+           role='button'
+           @click='handleClickFinish'>完成</a>
       </p>
     </div>
   </div>
@@ -57,7 +69,8 @@ export default {
       setCurrent: TestingActions.setCurrent,
       setAnswer: TestingItemActions.setAnswer,
       updateTesting: TestingActions.update,
-      nextItem: TestingActions.nextItem
+      nextItem: TestingActions.nextItem,
+      finishTesting: TestingActions.finish
     },
     getters: {
       index: (state) => +state.route.params.item_index,
@@ -74,7 +87,42 @@ export default {
   },
 
   computed: {
+    progressMin: function() {
+      return 0
+    },
+    progressMax: function() {
+      if (this.testing.config.testingMode.mode === 1) {
+        return this.testing.config.testingMode.number * 60
+      }
+      return Number(this.testing.config.testingMode.number)
+    },
+    progressCurrent: function() {
+      return this.index
+    },
 
+    countdownDuration: function() {
+      if (this.testing.config.testingMode.mode === 1) {
+        return this.testing.config.testingMode.number * 60
+      }
+      return 0
+    },
+
+    finished: function() {
+      if (this.testing.config.testingMode.mode === 1) {
+        return this.testing.used >= this.testing.config.testingMode.number * 60
+      } else if (this.testing.config.testingMode.mode === 2) {
+        return this.testing.items.length >= this.testing.config.testingMode.number
+      }
+      return false
+    },
+
+    showFinishBtn: function() {
+      if (this.testing.config.testingMode.mode === 3 || this.finished) {
+        return true
+      } else {
+        return false
+      }
+    }
   },
 
   methods: {
@@ -85,12 +133,14 @@ export default {
       // debugger
       this.nextItem(this.testing, this.item, Number(this.$route.params.item_index))
     },
+    handleClickFinish() {
+      this.finishTesting(this.testing)
+    },
     handleCountdownTimeout() {
-      console.log('handleCountdownTimeout')
+      this.finishTesting(this.testing)
     },
     handleCountdownSection(current) {
       this.updateTesting(this.testing, {used: current})
-      console.log('handleCountdownSection', current)
     }
   },
 
@@ -98,7 +148,6 @@ export default {
     data(t) {
       this.setCurrent(this.$route.params.testing_id)
       this.getItemAt(this.testing, this.index)
-      console.log(this.testing)
       t.next()
     }
   },
@@ -115,6 +164,6 @@ export default {
     border-width: 4px;
   }
   .correct {
-    background-color: greenyellow!important;
+    /*background-color: greenyellow!important;*/
   }
 </style>

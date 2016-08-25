@@ -50,6 +50,11 @@ export default function(router, store) {
           name: 'testing-item',
           component: require('pages/testings/item'),
           display: '测试'
+        },
+        '/:testing_id/results': {
+          name: 'testing-results',
+          component: require('pages/testings/results'),
+          display: '查看结果'
         }
       }
     },

@@ -26,7 +26,7 @@ export default {
     },
     current: {
       type: Number,
-      default: 10
+      default: 0
     }
   },
 
@@ -47,6 +47,7 @@ export default {
 
   computed: {
     percent() {
+      console.log(this.max)
       return Math.round((this.current-this.min) / (this.max-this.min) * 10000) / 100
     }
   },

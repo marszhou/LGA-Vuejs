@@ -26,7 +26,7 @@ export default class Testing {
     this.finishedOn = 0         // 结束时间
     this.begun = false          // 开始？
     this.beginOn = 0            // 开始时间
-    this.used    = 0            // 已经用时
+    this.used = 0               // 已经用时
     this.type = type            // 类型
     this.config = config        // 测试的配置
     this.items = []             // 试题列表
@@ -86,13 +86,15 @@ export default class Testing {
 
   static load(id) {
     try {
-      let {type, config, items, createdOn, begun, finished} = loadObj(id, prefix)
+      let object = loadObj(id, prefix)
+      let {type, config} = object
       let testing = new Testing(type, config)
       testing.id = id
-      testing.createdOn = createdOn
-      testing.begun = begun
-      testing.finished = finished
-      testing.items = items
+      // testing.createdOn = createdOn
+      // testing.begun = begun
+      // testing.finished = finished
+      // testing.items = items
+      _.assign(testing, object)
       return testing
     } catch (e) {
       return null
