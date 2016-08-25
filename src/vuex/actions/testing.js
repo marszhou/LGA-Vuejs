@@ -1,5 +1,4 @@
 import {testing} from '../mutation-types'
-
 import {TestingFactory} from 'models/testing'
 
 export default {
@@ -17,5 +16,25 @@ export default {
 
   setCurrent({dispatch}, id) {
     dispatch(testing.GET, id)
+  },
+
+  begin({dispatch}, t) {
+    dispatch(testing.BEGIN, t)
+  },
+
+  continue({dispatch}, t) {
+    dispatch(testing.CONTINUE, t)
+  },
+
+  update({dispatch}, t, props) {
+    dispatch(testing.UPDATE, t, props)
+  },
+
+  nextItem({dispatch}, t, currentItem, currentItemIndex) {
+    dispatch(testing.NEXT, t, currentItem, currentItemIndex)
+  },
+
+  finish({dispatch}, t) {
+    dispatch(testing.FINISH, t)
   }
 }

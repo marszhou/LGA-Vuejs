@@ -72,6 +72,10 @@ module.exports = {
     'spaced-comment': [0, 'always'],
     'semi': [0, 'always'],
     'new-cap': 0,
-    'no-unreachable': [1]
+    'no-unreachable': [1],
+    'one-var': 0,
+    'padded-blocks': 0,
+    'no-throw-literal': 0,
+    'handle-callback-err': 0
   }
 }

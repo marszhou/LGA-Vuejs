@@ -1,33 +1,14 @@
 <template>
   <div class='container-fluid'>
-
     <div id="app">
-
       <navbar></navbar>
-
       <breadcrumbs></breadcrumbs>
-
-      <!-- <ol class="breadcrumb">
-        <li><a href="#" v-link="{name: 'home'}">Home</a></li>
-        <li v-for="bc in breadcrumbs">
-          <a href='#' v-link="{name: bc.name}" v-if='!!bc.name'>{{ bc.display }}</a>
-          <template v-else>{{ bc.display }}</template>
-        </li>
-      </ol> -->
-
       <div class="panel panel-default">
-
         <div class="panel-body">
-
-
-
-
           <router-view class="view" transition="test" transition-mode="out-in"></router-view>
         </div>
-
       </div>
     </div>
-
   </div>
 </template>
 
