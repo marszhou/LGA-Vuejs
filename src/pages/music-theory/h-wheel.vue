@@ -1,6 +1,6 @@
 <template>
 <div>
-  <router-view></router-view>
+  h-wheel
 </div>
 </template>
 

@@ -1,4 +1,7 @@
 <template>
+<div>
+  standard
+</div>
 </template>
 
 <script>

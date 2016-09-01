@@ -18,7 +18,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">乐理 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#" v-link="{name: 'app-alphabet-solfa'}" @click='handleLink'>基本</a></li>
+            <li><a href="#" v-link="{name: 'mt-h-wheel'}" @click='handleLink'>H-Wheel</a></li>
+            <li><a href="#" v-link="{name: 'mt-standard'}" @click='handleLink'>基本</a></li>
           </ul>
         </li>
         <li class="dropdown">
