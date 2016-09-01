@@ -77,7 +77,13 @@ export default function(router, store) {
 
     'music-theory': {
       name: 'music-theory',
-      component: require('pages/music-theory')
+      component: require('pages/music-theory'),
+      subRoutes: {
+        '/standard': {
+          name: 'mt-standard',
+          component: require('pages/music-theory/standard')
+        }
+      }
     }
   }
 
