@@ -15,17 +15,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#" v-link="{name: 'app-alphabet-solfa'}" @click='handleLink'>
-            音名唱名转换
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilities <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">乐理 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#" v-link="{name: 'app-alphabet-solfa'}">音名唱名转换</a></li>
+            <li><a href="#" v-link="{name: 'app-alphabet-solfa'}" @click='handleLink'>基本</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">测试 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" v-link="{name: 'app-alphabet-solfa'}" @click='handleLink'>音名唱名转换</a></li>
           </ul>
         </li>
 

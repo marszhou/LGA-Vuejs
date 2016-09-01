@@ -97,6 +97,9 @@ export default {
       return Number(this.testing.config.testingMode.number)
     },
     progressCurrent: function() {
+      if (this.testing.config.testingMode.mode === 1) {
+        return this.testing.used
+      }
       return this.index
     },
 

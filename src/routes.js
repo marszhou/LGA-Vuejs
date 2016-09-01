@@ -73,6 +73,11 @@ export default function(router, store) {
           display: '音名唱名转换'
         }
       } // 1
+    },
+
+    'music-theory': {
+      name: 'music-theory',
+      component: require('pages/music-theory')
     }
   }
 
