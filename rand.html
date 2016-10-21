@@ -53,7 +53,7 @@ function makeRand() {
   var change = function() {
     var min = Number(document.getElementById('min').value);
     var max = Number(document.getElementById('max').value);
-    var rand = Math.floor(Math.random() * (max - min)) + min;
+    var rand = Math.round(Math.random() * (max - min)) + min;
     document.getElementById('number').innerHTML = rand;
     document.getElementById('go').disabled = false;
   };
