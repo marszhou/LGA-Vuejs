@@ -19,7 +19,7 @@
 </head>
 <body>
 <div style='width: 100%; height: 450px; display: table; text-align: center;'>
-  <div style='font-size: 144px;text-align: center;height:100%;display: table-cell;width: 100%;vertical-align: middle;'>
+  <div style='font-size: 144px;text-align: center;height:100%;display: table-cell;width: 100%;vertical-align: middle;' id='number'>
     100
   </div>
 </div>
@@ -31,13 +31,26 @@
   <p>
     <button style="
     border: 1px solid blue;
+    width: 80px;
+    height: 80px;
     background: blue;
     font-size: 32px;
     color: white;
     margin:0;
     padding:0;
-    text-align: center">GO!</button>
+    text-align: center" onClick='makeRand()'>GO!</button>
   </p>
 </div>
+
+<script>
+function makeRand() {
+  var min = Number(document.getElementById('min').value);
+  var max = Number(document.getElementById('max').value);
+
+  var rand = Math.floor(Math.random() * (max - min)) + min;
+
+  document.getElementById('number').innerHTML = rand;
+}
+</script>
 </body>
 </html>
