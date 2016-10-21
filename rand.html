@@ -9,11 +9,17 @@
   <style>
       body, html {
        height: 100%;
+       font-family: 'STHeiti';
       }
 
       input[type=number] {
         border: 1px solid gray;
         width: 3em;
+      }
+
+      button:disabled {
+        background: #EEE!important;
+        color: #333!important;
       }
   </style>
 </head>
@@ -38,18 +44,22 @@
     color: white;
     margin:0;
     padding:0;
-    text-align: center" onClick='makeRand()'>GO!</button>
+    text-align: center" onClick='makeRand()' id='go'>GO!</button>
   </p>
 </div>
 
 <script>
 function makeRand() {
-  var min = Number(document.getElementById('min').value);
-  var max = Number(document.getElementById('max').value);
-
-  var rand = Math.floor(Math.random() * (max - min)) + min;
-
-  document.getElementById('number').innerHTML = rand;
+  var change = function() {
+    var min = Number(document.getElementById('min').value);
+    var max = Number(document.getElementById('max').value);
+    var rand = Math.floor(Math.random() * (max - min)) + min;
+    document.getElementById('number').innerHTML = rand;
+    document.getElementById('go').disabled = false;
+  };
+  document.getElementById('number').innerHTML = '--';
+  document.getElementById('go').disabled = true;
+  setTimeout(change, 500);
 }
 </script>
 </body>
