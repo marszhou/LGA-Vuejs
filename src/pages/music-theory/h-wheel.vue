@@ -1,6 +1,6 @@
 <template>
 <div>
-  h-wheel
+  <img src='../../assets/L03_H-Wheel.png' class="img-responsive">
 </div>
 </template>
 
