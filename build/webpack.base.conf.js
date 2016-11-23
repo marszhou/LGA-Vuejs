@@ -49,6 +49,8 @@ module.exports = {
       }
     ],
     loaders: [
+      { test: /\.txt$/, loader: 'raw'},
+      { test: /\.md$/, loader: "html!markdown" },
       {
         test: /\.vue$/,
         loader: 'vue'
