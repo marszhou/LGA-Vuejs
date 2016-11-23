@@ -75,19 +75,19 @@ export default function(router, store) {
       } // 1
     },
 
-    'music-theory': {
-      name: 'music-theory',
-      component: require('pages/music-theory'),
+    'musical-theory': {
+      name: 'musical-theory',
+      component: require('pages/musical-theory'),
       display: '乐理',
       subRoutes: {
         '/standard': {
           name: 'mt-standard',
-          component: require('pages/music-theory/standard'),
+          component: require('pages/musical-theory/standard'),
           display: '基本'
         },
         '/h-wheel': {
           name: 'mt-h-wheel',
-          component: require('pages/music-theory/h-wheel'),
+          component: require('pages/musical-theory/h-wheel'),
           display: 'H-Wheel'
         }
       }

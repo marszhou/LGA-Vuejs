@@ -1,13 +1,15 @@
 <template>
 <div>
-  standard
+  {{{mdContent}}}
 </div>
 </template>
 
 <script>
+import {markdown} from 'markdown'
+
 export default {
 
-  name: 'component_name',
+  name: 'standard-page',
 
   components: {
 
@@ -24,12 +26,11 @@ export default {
 
   data() {
     return {
-
+      mdContent: require('./standard.md')
     };
   },
 
   computed: {
-
   },
 
   methods: {
