@@ -1,14 +1,11 @@
 <template>
-  <div>
-    chords
-    <router-view></router-view>
-  </div>
+  <div>list</div>
 </template>
 
 <script>
 export default {
 
-  name: 'chords-page',
+  name: 'component_name',
 
   components: {
 

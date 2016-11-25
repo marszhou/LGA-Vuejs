@@ -89,6 +89,24 @@ export default function(router, store) {
           name: 'mt-h-wheel',
           component: require('pages/musical-theory/h-wheel'),
           display: 'H-Wheel'
+        },
+
+        '/chords': {
+          name: 'mt-chords',
+          component: require('pages/musical-theory/chords'),
+          display: 'chords',
+          subRoutes: {
+            '/': {
+              name: 'chord-home',
+              component: require('pages/musical-theory/chords/home'),
+              display: 'home'
+            },
+            '/:alpha': {
+              name: 'chord-list',
+              component: require('pages/musical-theory/chords/list'),
+              display: 'list'
+            }
+          }
         }
       }
     }
