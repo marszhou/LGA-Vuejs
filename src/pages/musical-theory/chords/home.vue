@@ -1,14 +1,16 @@
 <template>
-  <div>home</div>
+  <chord-search-form></chord-search-form>
 </template>
 
 <script>
+import ChordSearchForm from 'components/chord-search-form'
+
 export default {
 
   name: 'component_name',
 
   components: {
-
+    ChordSearchForm
   },
 
   vuex: {
