@@ -20,6 +20,7 @@
           <ul class="dropdown-menu">
             <li><a href="#" v-link="{name: 'mt-h-wheel'}" @click='handleLink'>H-Wheel</a></li>
             <li><a href="#" v-link="{name: 'mt-standard'}" @click='handleLink'>基本</a></li>
+            <li><a href="#" v-link="{name: 'mt-chords'}" @click='handleLink'>和弦查询</a></li>
           </ul>
         </li>
         <li class="dropdown">
