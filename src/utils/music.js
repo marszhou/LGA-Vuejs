@@ -63,6 +63,22 @@ export function generateRandomAlphaSolfaPair(a) {
   return {a: scale[rand], s: rand + 1}
 }
 
+export function getChordPitches() {
+  return {'♭': '♭', '': '(原调)', '♯': '♯'}
+}
+
+export function getChordTypes() {
+  return {'major': '大调', 'minor': '小调'}
+}
+
+export function getChordSpecs() {
+  return {3: '三和弦', 6: '六和弦', 7: '七和弦'}
+}
+
+export function getChordModifiers() {
+  return {'': '(none)', sus: 'sus'}
+}
+
 export function generateRandomAlpha() {
 
 }
