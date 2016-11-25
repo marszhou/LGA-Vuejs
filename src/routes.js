@@ -94,7 +94,7 @@ export default function(router, store) {
         '/chords': {
           name: 'mt-chords',
           component: require('pages/musical-theory/chords'),
-          display: 'chords',
+          display: '和弦',
           subRoutes: {
             '/': {
               name: 'chord-home',
