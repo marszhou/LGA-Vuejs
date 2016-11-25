@@ -102,9 +102,9 @@ export default function(router, store) {
               display: 'home'
             },
             '/:alpha': {
-              name: 'chord-list',
-              component: require('pages/musical-theory/chords/list'),
-              display: 'list'
+              name: 'chord-detail',
+              component: require('pages/musical-theory/chords/detail'),
+              display: 'detail'
             }
           }
         }

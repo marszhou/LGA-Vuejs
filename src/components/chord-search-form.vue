@@ -94,7 +94,18 @@ export default {
 
   methods: {
     handleSearch() {
-      console.log('search');
+      this.$route.router.go({
+        name: 'chord-detail',
+        params: {
+          alpha: 'C'
+        },
+        query: {
+          pitch: this.pitch,
+          type: this.type,
+          spec: this.spec,
+          modifier: this.modifier
+        }
+      })
     }
   },
 
