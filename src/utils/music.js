@@ -25,6 +25,25 @@ export function getMinors() {
   return ['g', 'a', 'b', 'c', 'd', 'e', 'f'];
 }
 
+export function twelveWithSharp() {
+  return allAlphas.map(a => {
+    console.log(a, _.isArray(a))
+    if (_.isArray(a)) {
+      return a[0]
+    }
+    return a
+  })
+}
+
+export function twelveWithFlat() {
+  return allAlphas.map(a => {
+    if (_.isArray(a)) {
+      return a[1]
+    }
+    return a
+  })
+}
+
 /**
  * 获得指定调子的全部音符
  */
@@ -68,7 +87,7 @@ export function getChordPitches() {
 }
 
 export function getChordTypes() {
-  return {'major': '大调', 'minor': '小调'}
+  return {'major': '大调', 'minor': '小调'}
 }
 
 export function getChordSpecs() {
@@ -77,6 +96,14 @@ export function getChordSpecs() {
 
 export function getChordModifiers() {
   return {'': '(none)', sus: 'sus'}
+}
+
+export function getTwelveWithSharpSpecs() {
+  let ret = {'': '(none)'}
+  twelveWithSharp().forEach(a => {
+    ret[a] = a
+  })
+  return ret
 }
 
 export function generateRandomAlpha() {

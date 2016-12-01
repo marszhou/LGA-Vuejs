@@ -104,7 +104,7 @@ export default function(router, store) {
             '/:alpha': {
               name: 'chord-detail',
               component: require('pages/musical-theory/chords/detail'),
-              display: 'detail'
+              display: '信息'
             }
           }
         }

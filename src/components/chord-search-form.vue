@@ -8,6 +8,14 @@
       </select>
     </form-group>
 
+    <form-group label='低音' layout-target='xs' :title-column-width='3' :value-column-width='9'>
+      <select class='form-control' v-model='lowKey'>
+        <option v-for='(value, label) of lowKeys' :value='value'>
+          {{label}}
+        </option>
+      </select>
+    </form-group>
+
     <form-group label='音高' layout-target='xs' :title-column-width='3' :value-column-width='9'>
       <select class='form-control' v-model='pitch' >
         <option v-for='(value, label) of pitches' :value='value'>
@@ -32,7 +40,7 @@
       </select>
     </form-group>
 
-    <form-group label='修饰符' layout-target='xs' :title-column-width='3' :value-column-width='9'>
+    <form-group label='修饰符' layout-target='xs' :title-column-width='3' :value-column-width='9'>
       <select class='form-control' v-model='modifier'>
         <option v-for='(value, label) of modifiers' :value='value'>
           {{label}}
@@ -84,7 +92,9 @@ export default {
       specs: Music.getChordSpecs(),
       spec: 3,
       modifiers: Music.getChordModifiers(),
-      modifier: ''
+      modifier: '',
+      lowKeys: Music.getTwelveWithSharpSpecs(),
+      lowKey: ''
     };
   },
 
@@ -97,13 +107,14 @@ export default {
       this.$route.router.go({
         name: 'chord-detail',
         params: {
-          alpha: 'C'
+          alpha: this.alpha
         },
         query: {
           pitch: this.pitch,
           type: this.type,
           spec: this.spec,
-          modifier: this.modifier
+          modifier: this.modifier,
+          lowKey: this.lowKey
         }
       })
     }
