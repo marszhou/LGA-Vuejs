@@ -87,13 +87,17 @@ export default {
     let min = 100
     let max = 0
     for (let i of config.positions) {
-      if ((i+'').toUpperCase() !== 'X') {
+      if ((i+'').toUpperCase() !== 'X' && i !== 0) {
         min = Math.min(min, i)
         max = Math.max(max, i)
       }
     }
 
-    return max -  (min === 0 ? min : min - 1)
+    let ret = max -  (min === 0 ? min : min - 1)
+    if (ret < 3) {
+      ret = 3
+    }
+    return ret
   },
   configs: {
     guitar: {
@@ -101,6 +105,16 @@ export default {
         {
           start: 0,
           positions: '010230' // 1弦，2弦...6弦，若不可用则用x
+        },
+        {
+          start: 2,
+          positions: '355533'
+        }
+      ],
+      'Cm6': [
+        {
+          start: 3,
+          positions: '54550x'
         }
       ],
       'F': [

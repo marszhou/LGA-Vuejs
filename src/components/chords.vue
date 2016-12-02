@@ -11,7 +11,7 @@
            :width='width'
            :config='config'>
     </chord>
-    {{configs | json}}
+    {{name | json}}
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
 
   data() {
     return {
+      name: ChordUtil.chordName(this.alpha, this.modifier, this.type, this.pitch, this.spec, this.rootKey),
       configs: ChordUtil.getConfigs(this.instrument, ChordUtil.chordName(this.alpha, this.modifier, this.type, this.pitch, this.spec, this.rootKey))
     };
   },

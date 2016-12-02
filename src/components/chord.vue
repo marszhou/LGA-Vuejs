@@ -1,5 +1,4 @@
 <template>
-<div>
   <svg :width='width' :height='height'>
     <text class='name' :x='width / 2' y='48' text-anchor='middle' style='fill: #999999; stroke: #000000;  font-size: 40px;'>{{name}}</text>
     <g :x='innerX' :y='innerY' :transform='innerTransform' style="stroke:rgb(0,0,0);"  :style='{strokeWidth: strokeWidth}'>
@@ -12,8 +11,6 @@
               :r='positionRadius' v-for='position of holdPositions'></circle>
     </g>
   </svg>
-  {{holdPositions | json}}
-</div>
 </template>
 
 <script>
