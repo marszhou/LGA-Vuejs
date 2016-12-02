@@ -8,9 +8,9 @@
       </select>
     </form-group>
 
-    <form-group label='低音' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='lowKey'>
-        <option v-for='(value, label) of lowKeys' :value='value'>
+    <form-group label='根音' layout-target='xs' :title-column-width='3' :value-column-width='9'>
+      <select class='form-control' v-model='rootKey'>
+        <option v-for='(value, label) of rootKeys' :value='value'>
           {{label}}
         </option>
       </select>
@@ -93,8 +93,8 @@ export default {
       spec: 3,
       modifiers: Music.getChordModifiers(),
       modifier: '',
-      lowKeys: Music.getTwelveWithSharpSpecs(),
-      lowKey: ''
+      rootKeys: Music.getTwelveWithSharpSpecs(),
+      rootKey: ''
     };
   },
 
@@ -114,7 +114,7 @@ export default {
           type: this.type,
           spec: this.spec,
           modifier: this.modifier,
-          lowKey: this.lowKey
+          rootKey: this.rootKey
         }
       })
     }

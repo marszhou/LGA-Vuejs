@@ -5,13 +5,17 @@ export default {
   serialize(chord) {
 
   },
-  chordName(alpha, modifier, type, pitch, spec, lowKey) {
+  chordName(alpha, modifier, type, pitch, spec, rootKey) {
     let ret = `${alpha}`
     if (modifier) {
       ret += modifier
     }
     if (type !== 'major') {
       ret += 'm'
+    } else if (spec === 6 || spec === 7 || spec === 9) {
+      if (type === 'major2') { // 大小三和和弦，似乎对6、7和弦都有此区分
+        ret += 'major'
+      }
     }
     if (pitch) {
       ret += pitch
@@ -19,8 +23,8 @@ export default {
     if (spec !== 3) {
       ret += spec
     }
-    if (lowKey && lowKey != alpha + pitch) {
-      ret += '/' + lowKey
+    if (rootKey && rootKey != alpha + pitch) {
+      ret += '/' + rootKey
     }
     return ret
   },
@@ -53,18 +57,64 @@ export default {
           return Number(v)
         }
       },
+      rootKey: {
+        type: String,
+        default: ''
+      },
       width: {
         type: Number,
         default: 240
       }
     }
   },
+  getConfigs(instrument, chordName) {
+    if (this.configs[instrument] && this.configs[instrument][chordName]) {
+      let configs = _.cloneDeep(this.configs[instrument][chordName])
+      configs = configs.map(config => {
+        config.positions = config.positions.split('').map(x => {
+          if (x.toUpperCase() === 'X') {
+            return x
+          }
+          return Number(x)
+        })
+        return config
+      })
+      return configs
+    }
+    return []
+  },
+  getChordFretScale(config) { // 和弦的品跨度
+    let min = 100
+    let max = 0
+    for (let i of config.positions) {
+      if ((i+'').toUpperCase() !== 'X') {
+        min = Math.min(min, i)
+        max = Math.max(max, i)
+      }
+    }
+
+    return max -  (min === 0 ? min : min - 1)
+  },
   configs: {
     guitar: {
-      'C': [{
-        start: 0,
-        positions: '010230' // 1弦，2弦...6弦，若不可用则用x
-      }]
+      'C': [
+        {
+          start: 0,
+          positions: '010230' // 1弦，2弦...6弦，若不可用则用x
+        }
+      ],
+      'F': [
+        {
+          start: 0,
+          positions: '112331'
+        }
+      ],
+      'F♯': [
+        {
+          start: 1,
+          positions: '223442'
+        }
+      ]
     }
   }
 }

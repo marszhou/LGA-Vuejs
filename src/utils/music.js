@@ -87,15 +87,15 @@ export function getChordPitches() {
 }
 
 export function getChordTypes() {
-  return {'major': '大调', 'minor': '小调'}
+  return {'major': '大调和弦', 'minor': '小调和弦', 'major2': '大小和弦'}
 }
 
 export function getChordSpecs() {
-  return {3: '三和弦', 6: '六和弦', 7: '七和弦'}
+  return {3: '三和弦', 6: '六和弦', 7: '七和弦', 11: '十一和弦', 13: '十三和弦'}
 }
 
 export function getChordModifiers() {
-  return {'': '(none)', sus: 'sus'}
+  return {'': '(none)', sus4: '挂四和弦', aug: '增和弦', dim: '减和弦', dim5: '减五和弦'}
 }
 
 export function getTwelveWithSharpSpecs() {
