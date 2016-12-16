@@ -6,6 +6,7 @@
             :modifier='$route.query.modifier'
             :type='$route.query.type'
             :root-key='$route.query.rootKey'
+            :width='300'
             ></chord>
 
   </div>

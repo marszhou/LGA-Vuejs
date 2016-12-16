@@ -10,11 +10,11 @@ export default {
     if (modifier) {
       ret += modifier
     }
-    if (type !== 'major') {
+    if (type === 'minor') {
       ret += 'm'
     } else if (spec === 6 || spec === 7 || spec === 9) {
       if (type === 'major2') { // 大小三和和弦，似乎对6、7和弦都有此区分
-        ret += 'major'
+        ret += 'maj'
       }
     }
     if (pitch) {
@@ -71,7 +71,7 @@ export default {
     if (this.configs[instrument] && this.configs[instrument][chordName]) {
       let configs = _.cloneDeep(this.configs[instrument][chordName])
       configs = configs.map(config => {
-        config.positions = config.positions.split('').map(x => {
+        config.positions = config.positions.split('-').map(x => {
           if (x.toUpperCase() === 'X') {
             return x
           }
@@ -104,11 +104,29 @@ export default {
       'C': [
         {
           start: 0,
-          positions: '010230' // 1弦，2弦...6弦，若不可用则用x
+          positions: '0-1-0-2-3-0' // 1弦，2弦...6弦，若不可用则用x
         },
         {
           start: 2,
-          positions: '355533'
+          positions: '3-5-5-5-3-x'
+        },
+        {
+          start: 7,
+          positions: '8-8-9-10-x-x'
+        },
+        {
+          start: 7,
+          positions: 'x-x-9-10-10-8'
+        },
+        {
+          start: 7,
+          positions: '8-8-9-10-10-8'
+        }
+      ],
+      'Cmaj7': [
+        {
+          start: 6,
+          positions: '7-8-9-10-x-x'
         }
       ],
       'Cm6': [

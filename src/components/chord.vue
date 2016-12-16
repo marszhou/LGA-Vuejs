@@ -1,14 +1,40 @@
 <template>
   <svg :width='width' :height='height'>
-    <text class='name' :x='width / 2' y='48' text-anchor='middle' style='fill: #999999; stroke: #000000;  font-size: 40px;'>{{name}}</text>
+    <text class='name'
+          :x='width / 2'
+          y='48'
+          text-anchor='middle'
+          style='fill: #999999; stroke: #000000; '
+          :style='{fontSize: titleFontSize}'>{{name}}</text>
+
     <g :x='innerX' :y='innerY' :transform='innerTransform' style="stroke:rgb(0,0,0);"  :style='{strokeWidth: strokeWidth}'>
+      <text :x='- sideTextFontSize ' :y='sideTextFontSize/2' style='troke: #000000; stroke-width: 1px' :style='{fontSize: sideTextFontSize}'>
+        {{config.start}}
+      </text>
       <rect v-el:bg :width="innerWidth" :height="innerHeight" style="fill:white;"/>
-      <line class='strings' :x1="innerWidth/(strings.length-1) * i" y1="0" :x2="innerWidth/(strings.length-1) * i" :y2="innerHeight" v-for='i of strings'/>
-      <line class='frets' x1='0' :x2='innerWidth' :y1='innerHeight / frets.length * i' :y2='innerHeight / frets.length * i' v-for='i of frets'/>
+      <g name='strings'>
+        <line class='strings' :x1="innerWidth/(strings.length-1) * i" y1="0" :x2="innerWidth/(strings.length-1) * i" :y2="innerHeight" v-for='i of strings'/>
+      </g>
+      <g name='frets'>
+        <line class='frets' x1='0' :x2='innerWidth' :y1='innerHeight / frets.length * i' :y2='innerHeight / frets.length * i' v-for='i of frets'/>
+      </g>
 
       <circle :cx='innerWidth / (strings.length - 1) * (strings.length - position[0])'
               :cy='innerHeight / frets.length * (position[1] - config.start - 1) + 3/5 * innerHeight / frets.length'
               :r='positionRadius' v-for='position of holdPositions'></circle>
+      <g :x='0' :y='-30' :transform='availableTransform'>
+        <template v-for='position of config.positions' track-by='$index'>
+          <circle style='fill: #ffffff'
+                  :r='availableRadius'
+                  :style='{strokeWidth: availableStrokeWidth}'
+                  :cx='innerWidth / (strings.length - 1) * (strings.length - $index - 1)' :cy='0'
+                  v-if='position-100'></circle>
+          <g v-else :transform='availableItemTransform($index)' :style='{strokeWidth: availableStrokeWidth}'>
+            <line x1='0' :x2='availableRadius * 2' y1='0' :y2='availableRadius * 2'/>
+            <line :x1='availableRadius * 2' :x2='0' y1='0' :y2='availableRadius * 2'/>
+          </g>
+        </template>
+      </g>
     </g>
   </svg>
 </template>
@@ -108,11 +134,28 @@ export default {
         }
         return ret
       }, [])
+    },
+    titleFontSize() {
+      return this.width / 7.5
+    },
+    sideTextFontSize() {
+      return Math.max(this.width / 20, 8)
+    },
+    availableTransform() {
+      return 'translate(0, -15)'
+    },
+    availableRadius() {
+      return Math.max(this.width / 60, 5)
+    },
+    availableStrokeWidth() {
+      return Math.max(this.width / 100, 3)
     }
   },
 
   methods: {
-
+    availableItemTransform(index) {
+      return 'translate('+(this.innerWidth / (this.strings.length - 1) * (this.strings.length - index - 1) - this.availableRadius)+', -'+this.availableRadius+')'
+    }
   },
 
   route: {
