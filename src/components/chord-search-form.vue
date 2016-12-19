@@ -49,13 +49,13 @@
     </form-group>
 
     <div class="form-group">
-      <div class='col-md-offset-2 col-md-2 col-xs-offset-0 col-xs-12'>
+      <div class='col-md-offset-3 col-md-9 col-xs-offset-0 col-xs-12'>
         <!-- <button type="button"
                 class="btn btn-info btn-block"
                 @click='handleSearch'>
            查看
         </button> -->
-        <button type='reset' class='btn'>
+        <button type='reset' class='btn btn-remove btn-block'>
           RESET
         </button>
       </div>

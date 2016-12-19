@@ -180,16 +180,43 @@ export default {
           positions: '5-4-5-5-0-x'
         }
       ],
+      '♯C': [
+        {
+          positions: '1-2-1-3-4-1'
+        }
+      ],
+      '♯Cm': [
+        {
+          start: 3,
+          positions: '4-5-6-6-4-4'
+        }
+      ],
       '♯C7': [
         {
           start: 3,
-          positions: '3-5-3-5-3-3'
+          positions: '4-6-4-6-4-4'
+        }
+      ],
+      '♯Cm7': [
+        {
+          start: 3,
+          positions: '4-5-4-6-4-4'
+        }
+      ],
+      '♯C6': [
+        {
+          positions: '1-2-1-3-1-1'
         }
       ],
       '♯Cm6': [
         {
           start: 4,
           positions: '6-5-6-6-x-x'
+        }
+      ],
+      '♯Cmaj7': [
+        {
+          positions: '1-1-1-3-4-1'
         }
       ],
       '♯C9': [
@@ -250,7 +277,7 @@ export default {
           positions: '2-4-3-4-x-x'
         }
       ],
-      '#D7': [
+      '♯D7': [
         {
           positions: '3-2-3-1-x-x'
         }
@@ -268,6 +295,11 @@ export default {
       '♯Dmaj7': [
         {
           positions: '3-3-3-1-1-x'
+        }
+      ],
+      '♯Dm6': [
+        {
+          positions: '2-1-3-1-1-x'
         }
       ],
       '♯D9': [
@@ -375,6 +407,36 @@ export default {
           positions: '6-6-3-3-3-x'
         }
       ],
+      '♯F': [
+        {
+          start: 1,
+          positions: '2-2-3-4-4-2'
+        }
+      ],
+      '♯Fm': [
+        {
+          start: 1,
+          positions: '2-2-2-4-4-2'
+        }
+      ],
+      '♯F7': [
+        {
+          start: 1,
+          positions: '2-2-3-2-4-2'
+        }
+      ],
+      '♯Fm7': [
+        {
+          start: 1,
+          positions: '2-2-2-2-4-2'
+        }
+      ],
+      '♯F6': [
+        {
+          start: 2,
+          positions: 'x-4-3-4-4-x'
+        }
+      ],
       '♯Fm6': [
         {
           positions: '2-2-2-1-0-x'
@@ -395,12 +457,6 @@ export default {
         {
           start: 1,
           positions: '2-2-4-4-2-2'
-        }
-      ],
-      '♯F': [
-        {
-          start: 1,
-          positions: '2-2-3-4-4-2'
         }
       ],
       'G': [

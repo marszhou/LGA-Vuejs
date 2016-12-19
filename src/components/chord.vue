@@ -9,7 +9,7 @@
           v-if='displayTitle'>{{name}}</text>
 
     <g :x='innerX' :y='innerY' :transform='innerTransform' style="stroke:rgb(0,0,0);"  :style='{strokeWidth: strokeWidth}'>
-      <text :x='- sideTextFontSize ' :y='sideTextFontSize/2' style='troke: #000000; stroke-width: 1px' :style='{fontSize: sideTextFontSize}'>
+      <text :x='- sideTextFontSize ' :y='sideTextFontSize/2' style='troke: #000000; stroke-width: 1px' :style='{fontSize: sideTextFontSize}'  v-if='config.start'>
         {{config.start}}
       </text>
       <rect v-el:bg :width="innerWidth" :height="innerHeight" style="fill:white;"/>
