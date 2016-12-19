@@ -1,10 +1,10 @@
 <template>
 <div class="form-group">
-  <label class="col-md-2 control-label" for="formGroupInputLarge">{{label}}</label>
+  <label :class='titleClass' class="control-label" for="formGroupInputLarge">{{label}}</label>
   <template v-if='multi'>
     <slot></slot>
   </template>
-  <div v-else class="col-md-10">
+  <div v-else :class="valueClass">
     <slot></slot>
   </div>
 
@@ -16,6 +16,18 @@ export default {
 
   name: 'form-group',
   props: {
+    layoutTarget: {
+      type: String,
+      default: 'md' // see bootstrap column layout define, also can use : xs sm md lg
+    },
+    titleColumnWidth: {
+      type: Number,
+      default: 2
+    },
+    valueColumnWidth: {
+      type: Number,
+      default: 10
+    },
     label: String,
     multi: {
       type: Boolean,
@@ -26,6 +38,14 @@ export default {
     return {
 
     };
+  },
+  computed: {
+    titleClass() {
+      return `col-${this.layoutTarget}-${this.titleColumnWidth}`
+    },
+    valueClass() {
+      return `col-${this.layoutTarget}-${this.valueColumnWidth}`
+    }
   }
 };
 </script>
