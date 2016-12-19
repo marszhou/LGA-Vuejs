@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       alphabetTestTypes: AlphabetTestConsts.typeLabels,
-      testMode: TestModeConsts.mode.TIME,
+      testMode: TestModeConsts.mode.COUNT,
       testing: null,
       error: false,
       success: false

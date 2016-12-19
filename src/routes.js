@@ -73,6 +73,42 @@ export default function(router, store) {
           display: '音名唱名转换'
         }
       } // 1
+    },
+
+    'musical-theory': {
+      name: 'musical-theory',
+      component: require('pages/musical-theory'),
+      display: '乐理',
+      subRoutes: {
+        '/standard': {
+          name: 'mt-standard',
+          component: require('pages/musical-theory/standard'),
+          display: '基本'
+        },
+        '/h-wheel': {
+          name: 'mt-h-wheel',
+          component: require('pages/musical-theory/h-wheel'),
+          display: 'H-Wheel'
+        },
+
+        '/chords': {
+          name: 'mt-chords',
+          component: require('pages/musical-theory/chords'),
+          display: '和弦',
+          subRoutes: {
+            '/': {
+              name: 'chord-home',
+              component: require('pages/musical-theory/chords/home'),
+              display: 'home'
+            },
+            '/:alpha': {
+              name: 'chord-detail',
+              component: require('pages/musical-theory/chords/detail'),
+              display: '信息'
+            }
+          }
+        }
+      }
     }
   }
 

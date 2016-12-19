@@ -1,8 +1,6 @@
 <template>
   <div>
-    Homepage
-    <a href="#" v-link="{path:'bar'}">Goto Bar</a>
-    <a href="#" v-link="{path:'foo'}">Goto Foo</a>
+
   </div>
 </template>
 

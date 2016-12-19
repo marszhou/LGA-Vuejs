@@ -29,7 +29,7 @@ export default {
   props: {
     mode: {
       type: Number,
-      default: TestModeConsts.mode.TIME
+      default: TestModeConsts.mode.COUNT
     }
   },
 
