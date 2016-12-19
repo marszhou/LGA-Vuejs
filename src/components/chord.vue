@@ -2,10 +2,11 @@
   <svg :width='width' :height='height'>
     <text class='name'
           :x='width / 2'
-          y='48'
+          :y='titleFontSize'
           text-anchor='middle'
           style='fill: #999999; stroke: #000000; '
-          :style='{fontSize: titleFontSize}'>{{name}}</text>
+          :style='{fontSize: titleFontSize}'
+          v-if='displayTitle'>{{name}}</text>
 
     <g :x='innerX' :y='innerY' :transform='innerTransform' style="stroke:rgb(0,0,0);"  :style='{strokeWidth: strokeWidth}'>
       <text :x='- sideTextFontSize ' :y='sideTextFontSize/2' style='troke: #000000; stroke-width: 1px' :style='{fontSize: sideTextFontSize}'>
@@ -122,7 +123,7 @@ export default {
       return ChordUtil.chordName(this.alpha, this.modifier, this.type, this.pitch, this.spec, this.rootKey)
     },
     configs() {
-      return ChordUtil.configs[this.instrument][this.name] || []
+      return ChordUtil.getConfigs(this.instrument, this.name)
     },
     positionRadius() {
       return this.width / 20

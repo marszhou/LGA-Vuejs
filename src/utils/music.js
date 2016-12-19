@@ -91,7 +91,7 @@ export function getChordTypes() {
 }
 
 export function getChordSpecs() {
-  return {3: '三和弦', 6: '六和弦', 7: '七和弦', 11: '十一和弦', 13: '十三和弦'}
+  return {3: '三和弦', 6: '六和弦', 7: '七和弦', 9: '九和弦', 11: '十一和弦', 13: '十三和弦'}
 }
 
 export function getChordModifiers() {

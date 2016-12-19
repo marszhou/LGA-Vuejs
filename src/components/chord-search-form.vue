@@ -1,7 +1,7 @@
 <template>
-  <form class='form-horizontal'>
+  <form class='form-horizontal'  @reset.prevent='handleReset'>
     <form-group label='调性' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='alpha'>
+      <select class='form-control' v-model='alpha' @change='handleChange' @reset='handleReset()'>
         <option v-for='label of alphas' :value='label'>
           {{label}}
         </option>
@@ -9,7 +9,7 @@
     </form-group>
 
     <form-group label='根音' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='rootKey'>
+      <select class='form-control' v-model='rootKey' @change='handleChange'>
         <option v-for='(value, label) of rootKeys' :value='value'>
           {{label}}
         </option>
@@ -17,7 +17,7 @@
     </form-group>
 
     <form-group label='音高' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='pitch' >
+      <select class='form-control' v-model='pitch'  @change='handleChange'>
         <option v-for='(value, label) of pitches' :value='value'>
           {{label}}
         </option>
@@ -25,7 +25,7 @@
     </form-group>
 
     <form-group label='类型' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='type'>
+      <select class='form-control' v-model='type' @change='handleChange'>
         <option v-for='(value, label) of types' :value='value'>
           {{label}}
         </option>
@@ -33,7 +33,7 @@
     </form-group>
 
     <form-group label='类别' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='spec'>
+      <select class='form-control' v-model='spec' @change='handleChange'>
         <option v-for='(value, label) of specs' :value='value'>
           {{label}}
         </option>
@@ -41,7 +41,7 @@
     </form-group>
 
     <form-group label='修饰符' layout-target='xs' :title-column-width='3' :value-column-width='9'>
-      <select class='form-control' v-model='modifier'>
+      <select class='form-control' v-model='modifier' @change='handleChange'>
         <option v-for='(value, label) of modifiers' :value='value'>
           {{label}}
         </option>
@@ -50,10 +50,13 @@
 
     <div class="form-group">
       <div class='col-md-offset-2 col-md-2 col-xs-offset-0 col-xs-12'>
-        <button type="button"
+        <!-- <button type="button"
                 class="btn btn-info btn-block"
                 @click='handleSearch'>
            查看
+        </button> -->
+        <button type='reset' class='btn'>
+          RESET
         </button>
       </div>
     </div>
@@ -99,10 +102,33 @@ export default {
   },
 
   computed: {
-
+    value() {
+      return {
+        alpha: this.alpha,
+        pitch: this.pitch,
+        type: this.type,
+        spec: this.spec,
+        modifier: this.modifier,
+        rootKey: this.rootKey
+      }
+    }
   },
 
   methods: {
+    handleReset(e) {
+      // console.log('reset', e)
+      this.alpha = 'C'
+      this.pitch = ''
+      this.type = 'major'
+      this.spec = 3
+      this.modifier = ''
+      this.rootKey = ''
+      this.handleChange()
+    },
+    handleChange() {
+      console.log('change', this.value)
+      this.$dispatch('chord-form:change', this.value)
+    },
     handleSearch() {
       this.$route.router.go({
         name: 'chord-detail',
@@ -118,6 +144,10 @@ export default {
         }
       })
     }
+  },
+
+  ready() {
+    this.handleChange()
   },
 
   route: {
